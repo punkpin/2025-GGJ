@@ -35,7 +35,6 @@ public class Skill
 {
     public string skill;
     public Location location;
-
     public string skillMessage;
 }
 
