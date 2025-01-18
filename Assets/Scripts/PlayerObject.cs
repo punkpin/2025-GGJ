@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerObject : BaseBubble
+
+public class PlayerObject : BaseBubble 
 {
     public Color color;
     public int team;
     public string skill;
-    public string item;
+    public int item;
+    public ItemManager ItemManager;
     public float colliderSize = 4.0f;
     public float skillCoolDown = 10.0f;
 
     public float skillTimeRemaining;
 
     public float freezeTimeRemaining;
+
+    public float skillCoolDownNow;
 
     public KeyCode moveUpKey = KeyCode.W;
     public KeyCode moveDownKey = KeyCode.S;
@@ -33,6 +37,9 @@ public class PlayerObject : BaseBubble
     new void Start()
     {
         base.Start();
+       
+        ItemManager itemManager = ItemManager.Instance;
+
         defaultSpeed = moveSpeed;
         defaultColliderSize = colliderSize;
         defaultScale = gameObject.transform.localScale;
@@ -102,7 +109,6 @@ public class PlayerObject : BaseBubble
     {
         if (skillTimeRemaining > 0 || skillCoolDown > 0)
         {
-            Debug.Log("Skill is unavailable");
             return;
         }
         switch (skill)
@@ -163,10 +169,40 @@ public class PlayerObject : BaseBubble
         }
     }
 
+    public void SetItem(int itemNumber)
+    {
+        item = itemNumber;
+    }
+
     private void UseItem()
     {
         // Implement item logic here
-        Debug.Log("Item used");
+           if (item != 0)
+        {
+            
+
+            if(item==1){
+               // 调用ITEM的Use方法
+            }
+            else if(item==2)
+            {
+                // 调用ITEM的Use方法
+
+                    ItemManager.useImem002();
+            }
+            else if(item==3)
+            {
+                // 调用ITEM的Use方法
+            }
+
+             Debug.Log("Item ID USED:"+item);
+             item=0;
+        }
+        else
+        {
+            Debug.Log("没有物品可以使用");
+        }
+   
     }
 
     private void Conquer()
@@ -176,7 +212,7 @@ public class PlayerObject : BaseBubble
         foreach (Collider2D collider in colliders)
         {
             GroundObject groundObject = collider.GetComponent<GroundObject>();
-            if (groundObject != null && !groundObject.isWall)
+            if (groundObject != null && !groundObject.isWall && groundObject.team != team)
             {
                 groundObject.SetTeam(team, color);
             }
@@ -187,6 +223,7 @@ public class PlayerObject : BaseBubble
     {
         // Check the collided object
         GameObject collidedObject = collision.gameObject;
+
         Debug.Log("Collided with: " + collidedObject.name);
 
         // Example: Check if the collided object is a GroundObject

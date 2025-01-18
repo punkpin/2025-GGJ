@@ -2,17 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ItemManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static ItemManager Instance;
+
+    void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // 如果已经有实例，销毁这个物体
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    public void useImem001()
     {
-        
+
+
+
+    }
+   public void useImem002()
+    {
+
+
+
+    }
+   public void useImem003()
+    {
+
+
+
     }
 }
