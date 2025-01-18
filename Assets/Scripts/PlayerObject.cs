@@ -15,21 +15,19 @@ public class PlayerObject : BaseBubble
     public int item;
 
     public bool isBoosted;
+   public Vector2 PlayeryDirection;
+
+
+       public ItemManager ItemManager;
+
 //item
 
-
-   Vector2 PlayeryDirection;
-
-
-    public ItemManager ItemManager;
     public float colliderSize = 4.0f;
     public float skillCoolDown = 10.0f;
 
     public float skillTimeRemaining;
 
     public float freezeTimeRemaining;
-
-    public float skillCoolDownNow;
 
     public KeyCode moveUpKey = KeyCode.W;
     public KeyCode moveDownKey = KeyCode.S;
@@ -40,6 +38,8 @@ public class PlayerObject : BaseBubble
 
     private bool isConquerEnable = true;
     private bool clawing = false;
+
+  private GameGenerator gameGenerator;
 
     private float defaultSpeed;
     private float defaultColliderSize;
@@ -65,10 +65,15 @@ public class PlayerObject : BaseBubble
         defaultSpeed = moveSpeed;
         defaultColliderSize = colliderSize;
         defaultScale = gameObject.transform.localScale;
+        gameGenerator = FindObjectOfType<GameGenerator>();
     }
 
     void Update()
     {
+
+
+ if (!gameGenerator.globalFreeze)  
+{
         Vector2 moveDirection = Vector2.zero;
 
         if (Input.GetKey(moveUpKey))
@@ -88,6 +93,7 @@ public class PlayerObject : BaseBubble
             moveDirection.x += 1;
         }
          PlayeryDirection=moveDirection;
+
         if (isConquerEnable)
         {
             Conquer();
@@ -125,12 +131,14 @@ public class PlayerObject : BaseBubble
         {
             ResetSkill();
         }
+       }
     }
 
     private void UseSkill()
     {
         if (skillTimeRemaining > 0 || skillCoolDown > 0)
         {
+            Debug.Log("Skill is unavailable");
             return;
         }
         switch (skill)
@@ -247,7 +255,7 @@ public class PlayerObject : BaseBubble
     {
         
         isBoosted = true;
-        moveSpeed = moveSpeed * 1.25f; // 将速度提升为基础速度的1.5倍
+        moveSpeed = moveSpeed * 1.6f; // 将速度提升为基础速度的1.5倍
         Debug.Log("Speed boosted to: " + moveSpeed);
 
         // 启动定时器，5秒后恢复基础速度
@@ -273,7 +281,7 @@ public class PlayerObject : BaseBubble
         foreach (Collider2D collider in colliders)
         {
             GroundObject groundObject = collider.GetComponent<GroundObject>();
-            if (groundObject != null && !groundObject.isWall && groundObject.team != team)
+            if (groundObject != null && !groundObject.isWall)
             {
                 groundObject.SetTeam(team, color);
             }
@@ -284,11 +292,7 @@ public class PlayerObject : BaseBubble
     {
         // Check the collided object
         GameObject collidedObject = collision.gameObject;
-         
-        
 
-
-        Debug.Log("Collided with: " + collidedObject.name);
 
         // Example: Check if the collided object is a GroundObject
         PlayerObject collidedPlayerObject = collidedObject.GetComponent<PlayerObject>();

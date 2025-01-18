@@ -102,8 +102,8 @@ MonoBehaviour:
   circleColor: {r: 1, g: 0.1641509, b: 0.1641509, a: 1}
   moveSpeed: 40
   color: {r: 0, g: 0, b: 0, a: 0}
-  colorTeam02: {r: 0, g: 0, b: 0.8, a: 1}
-  colorTeam01: {r: 0.8, g: 0.8, b: 0, a: 1}
+  colorTeam02: {r: 0.26666668, g: 1, b: 1, a: 1}
+  colorTeam01: {r: 0.26666668, g: 0.26666668, b: 1, a: 1}
   team: 0
 --- !u!50 &6326523916213012504
 Rigidbody2D:

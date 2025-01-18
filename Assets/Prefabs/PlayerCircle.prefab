@@ -102,15 +102,15 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   team: 0
   skill: 
-  TestItem: 2
+  TestItem: 1
   item: 0
   isBoosted: 0
+  PlayeryDirection: {x: 0, y: 0}
   ItemManager: {fileID: 0}
   colliderSize: 4
   skillCoolDown: 10
   skillTimeRemaining: 0
   freezeTimeRemaining: 0
-  skillCoolDownNow: 0
   moveUpKey: 119
   moveDownKey: 115
   moveLeftKey: 97
