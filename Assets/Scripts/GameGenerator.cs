@@ -9,14 +9,17 @@ public class GameGenerator : MonoBehaviour
     public PlayerObject playerPrefab;
     public ItemObject itemPrefab;
     public GameConfig gameConfig;
-    public Dictionary<int, float> teamScore = new Dictionary<int, float>();
+
+    [SerializeField]
+    public List<TeamScore> teamScoreList = new List<TeamScore>();
+    public float remainingTime;
+
     public int groundObjectCount = 0;
 
     private Dictionary<Vector2, GroundObject> groundObjects;
 
     void Start()
     {
-        teamScore.Clear();
         groundObjects = new Dictionary<Vector2, GroundObject>();
         GenerateGround();
         GenerateWalls();
@@ -25,17 +28,23 @@ public class GameGenerator : MonoBehaviour
         GenerateItems();
         AdjustCamera();
         groundObjectCount = groundObjects.Values.Count(x => !x.isWall);
+        remainingTime = gameConfig.configData.gametime;
     }
 
     void Update()
     {
-        var updatedScores = new Dictionary<int, float>();
-        foreach (var score in teamScore)
+        if (remainingTime > 0)
         {
-            updatedScores[score.Key] = groundObjects.Values.Count(x => x.team == score.Key && !x.isWall); 
-            Debug.Log($"Team {score.Key}: {updatedScores[score.Key]} points");
+            remainingTime -= Time.deltaTime;
+            Debug.Log($"Time remaining: {remainingTime} seconds");
+            
+            UpdateTeamScores();
+            
+            if (remainingTime <= 0)
+            {
+                EndGame();
+            }
         }
-        teamScore = updatedScores;
     }
 
     void GenerateGround()
@@ -52,6 +61,14 @@ public class GameGenerator : MonoBehaviour
                 groundObj.position = position;
                 groundObjects[position] = groundObj;
             }
+        }
+    }
+
+    void UpdateTeamScores()
+    {
+        foreach (var teamScore in teamScoreList)
+        {
+            teamScore.score = groundObjects.Values.Count(x => x.team == teamScore.teamId && !x.isWall);
         }
     }
 
@@ -108,6 +125,11 @@ public class GameGenerator : MonoBehaviour
             playerObj.moveRightKey = ParseKeyCode(player.keymap.right);
             playerObj.useSkillKey = ParseKeyCode(player.keymap.skill);
             playerObj.useItemKey = ParseKeyCode(player.keymap.item);
+
+            if (!teamScoreList.Any(ts => ts.teamId == playerObj.team))
+            {
+                teamScoreList.Add(new TeamScore { teamId = playerObj.team, score = 0 });
+            }
         }
     }
 
@@ -123,6 +145,12 @@ public class GameGenerator : MonoBehaviour
         }
     }
 
+    void EndGame()
+    {
+        // Handle end of game logic here
+        Debug.Log("Game Over!");
+    }
+
     private void AdjustCamera()
     {
         Camera mainCamera = Camera.main;
@@ -133,7 +161,7 @@ public class GameGenerator : MonoBehaviour
             var halfGroundHeight = ground.height * 0.5f;
 
             mainCamera.transform.position = new Vector3(halfGroundWidth - 0.25f, halfGroundHeight - 0.25f, mainCamera.transform.position.z);
-            mainCamera.orthographicSize = halfGroundWidth + 6;
+            mainCamera.orthographicSize = halfGroundHeight + 6;
         }
     }
 
@@ -173,4 +201,11 @@ public class GameGenerator : MonoBehaviour
                 throw new System.ArgumentException($"Unsupported key: {key}");
         }
     }
+}
+
+[System.Serializable]
+public class TeamScore
+{
+    public int teamId;
+    public int score;
 }

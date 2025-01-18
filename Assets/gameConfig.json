@@ -4,7 +4,7 @@
         "width": 124,
         "height": 84
     },
-    "wall": [
+    "walls": [
         {
             "color": "#AAAAAA",
             "location": {
@@ -19,14 +19,14 @@
             "location": {
                 "x": 0,
                 "y": 0,
-                "width": 2,
-                "height": 84
+                "width": 124,
+                "height": 2
             }
         },
         {
-            "color": "#AAAAAA",
+            "color": "#6600AA",
             "location": {
-                "x": 0,
+                "x": 122,
                 "y": 0,
                 "width": 2,
                 "height": 84
@@ -36,9 +36,9 @@
             "color": "#AAAAAA",
             "location": {
                 "x": 0,
-                "y": 0,
-                "width": 2,
-                "height": 84
+                "y": 82,
+                "width": 124,
+                "height": 2
             }
         }
     ],

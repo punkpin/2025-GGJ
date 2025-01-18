@@ -19,7 +19,6 @@ public class PlayerObject : BaseBubble
     new void Start()
     {
         base.Start();
-        GetComponent<Renderer>().material.color = circleColor;
     }
 
     void Update()
