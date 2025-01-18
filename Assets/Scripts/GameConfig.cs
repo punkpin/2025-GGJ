@@ -8,6 +8,7 @@ public class Ground
 {
     public int width;
     public int height;
+    public string color;
 }
 
 [Serializable]
@@ -36,8 +37,6 @@ public class Bomb
 public class Player
 {
     public string name;
-    public int team;
-    public string color;
     public string skill;
     public Location location;
 }

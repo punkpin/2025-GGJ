@@ -1,32 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using TMPro; 
 
 public class PlayerControllerObject : MonoBehaviour
 {
-    public int locationX;
-    public int locationY;
+    public int index;
+    public int location;
     public bool isReady;
-    public int textlocation;
+    public KeyCode moveLeftKey;
+    public KeyCode moveRightKey;
+    public KeyCode useSkillKey;
+    private TextMeshPro playerText;
 
-    public KeyCode moveLeftKey = KeyCode.A;
-    public KeyCode moveRightKey = KeyCode.D;
-    public KeyCode useSkillKey = KeyCode.Q;
+    public PlayerSelectionResult playerSelectionResult;
+    public PlayerSelectionConfig playerSelectionConfig;
+    private List<Location> controllerlocations;
+    private List<Skill> skills;
+    private PlayerController playerController;
+    private Color textColor;
+    private bool isMovingLeft = false;
+    private bool isMovingRight = false;
 
     void Start()
     {
-
+        PlayerSelectionConfigData playerSelectionConfigData = playerSelectionConfig.configData; 
+        controllerlocations = playerSelectionConfigData.controllerLocations;
+        skills = playerSelectionConfigData.skills;
+        playerController = playerSelectionConfigData.controllers[index];
+        textColor = ColorUtility.TryParseHtmlString(playerController.color, out Color color) ? color : Color.white;
+        playerText = GetComponentInChildren<TextMeshPro>();
+        if (playerText != null)
+        {
+            playerText.text = new string(Enumerable.Repeat("\n", index).SelectMany(s => s).ToArray()) + $"Player {playerController.name}";
+            playerText.color = textColor;
+        }
     }
 
     void Update()
     {
-        if (Input.GetKey(moveLeftKey) && locationX > 0 && !isReady)
+        if (isReady)
         {
-            locationX--;
+            return;
         }
-        if (Input.GetKey(moveRightKey) && locationX < 4 && !isReady)
+
+        bool changeLocation = false;
+
+        if (Input.GetKey(moveLeftKey) && location > 0 && !isReady && !isMovingLeft)
         {
-            locationX++;
+            isMovingLeft = true;
+            changeLocation = true;
+            location--;
+        }
+        if (Input.GetKey(moveRightKey) && location < controllerlocations.Count()- 1 && !isReady && !isMovingRight)
+        {
+            isMovingRight = true;
+            changeLocation = true;
+            location++;
+        }
+
+        if (Input.GetKeyUp(moveLeftKey))
+        {
+            isMovingLeft = false;
+        }
+
+        if (Input.GetKeyUp(moveRightKey))
+        {
+            isMovingRight = false;
+        }
+
+        if (changeLocation)
+        {
+            UpdateLocation();
+            changeLocation = false;
         }
 
         if (Input.GetKeyDown(useSkillKey))
@@ -37,6 +84,18 @@ public class PlayerControllerObject : MonoBehaviour
 
     private bool SetReady()
     {
+        string skill = skills.FirstOrDefault(s => s.location == location)?.skill;
+        if (playerSelectionResult.Set(skill, playerController))
+        {
+            playerText.text = $"Player {playerController.name}\nSkill {skill}\n\nREADY";
+            return true;
+        }
         return false;
+    }
+
+    private void UpdateLocation()
+    {
+        transform.position = new Vector3(controllerlocations[location].x, controllerlocations[location].y, -1);
+        transform.localScale = new Vector3(controllerlocations[location].width, controllerlocations[location].height, 1);
     }
 }

@@ -1,8 +1,37 @@
 {
+    "controllerLocations":
+    [
+        {
+            "x": 0,
+            "y": 0,
+            "width": 4,
+            "height": 4
+        },
+        {
+            "x": 6,
+            "y": 0,
+            "width": 4,
+            "height": 4
+        },
+        {
+            "x": 12,
+            "y": 0,
+            "width": 4,
+            "height": 4
+        },
+        {
+            "x": 18,
+            "y": 0,
+            "width": 4,
+            "height": 4
+        }
+    ],
     "controllers": 
     [
         {
-            "name": "a1",
+            "name": "A1",
+            "team": 1,
+            "color": "#3333CC",
             "keymap": {
                 "up": "s",
                 "down": "x",
@@ -11,16 +40,13 @@
                 "skill": "a",
                 "item": "d"
             },
-            "location": {
-                "x": 0,
-                "y": 1,
-                "width": 4,
-                "height": 4
-            },
+            "location": 0,
             "textlocation" : 0
         },
         {
-            "name": "b1",
+            "name": "B1",
+            "team": 2,
+            "color": "#44FFFF",
             "keymap": {
                 "up": "2",
                 "down": "w",
@@ -29,16 +55,13 @@
                 "skill": "1",
                 "item": "3"
             },
-            "location": {
-                "x": 4,
-                "y": 1,
-                "width": 4,
-                "height": 4
-            },
+            "location": 1,
             "textlocation" : 1
         },
         {
-            "name": "b2",
+            "name": "B2",
+            "team": 2,
+            "color": "#33CCCC",
             "keymap": {
                 "up": "l",
                 "down": ".",
@@ -47,16 +70,13 @@
                 "skill": "k",
                 "item": ";"
             },
-            "location": {
-                "x": 8,
-                "y": 1,
-                "width": 4,
-                "height": 4
-            },
+            "location": 2,
             "textlocation" : 2
         },
         {
-            "name": "a2",
+            "name": "A2",
+            "team": 1,
+            "color": "#4444FF",
             "keymap": {
                 "up": "0",
                 "down": "p",
@@ -65,60 +85,58 @@
                 "skill": "9",
                 "item": "-"
             },
-            "location": {
-                "x": 12,
-                "y": 1,
-                "width": 4,
-                "height": 4
-            },
+            "location": 3,
             "textlocation" : 3
+        }
+    ],
+    "skillLocations":
+    [
+        {
+            "x": 0,
+            "y": 7,
+            "width": 3,
+            "height": 3
+        },
+        {
+            "x": 6,
+            "y": 7,
+            "width": 3,
+            "height": 3
+        },
+        {
+            "x": 12,
+            "y": 7,
+            "width": 3,
+            "height": 3
+        },
+        {
+            "x": 18,
+            "y": 7,
+            "width": 3,
+            "height": 3
         }
     ],
     "skills":
     [
         {
             "skill": "fly",
-            "location": 
-            {
-                "x": 0,
-                "y": 5,
-                "width": 4,
-                "height": 4
-            },
-            "skillMessage": "fly"
+            "location": 0,
+            "skillMessage": "短暂地浮在空中，变得更轻更快，但无法留下颜料！"
         },
         {
             "skill": "fast",
-            "location": 
-            {
-                "x": 4,
-                "y": 5,
-                "width": 4,
-                "height": 4
-            },
-            "skillMessage": "fast"
+            "location": 1,
+            "skillMessage": "速度大幅提高，但也会让他变得更小！"
         },
         {
             "skill": "large",
-            "location": 
-            {
-                "x": 8,
-                "y": 5,
-                "width": 4,
-                "height": 4
-            },
-            "skillMessage": "large"
+            "location": 2,
+            "skillMessage": "膨胀起来，但也滚得更慢！"
         },
         {
             "skill": "claw",
-            "location": 
-            {
-                "x": 12,
-                "y": 5,
-                "width": 4,
-                "height": 4
-            },
-            "skillMessage": "claw"
+            "location": 3,
+            "skillMessage": "强化自身，短时间内无惧碰撞！"
         }
     ]
 }

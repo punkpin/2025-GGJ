@@ -6,7 +6,7 @@ public class GroundObject : MonoBehaviour
     public Vector2 position;
 
     public int team;
-    public Color unOccupiedColor = new Color(1, 1, 1, 0.5f);
+    public Color unOccupiedColor;
     public Color wallColor = Color.gray;
     public Bounds initialBounds;
     public SpriteRenderer squareRenderer;

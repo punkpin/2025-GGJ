@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class GameGenerator : MonoBehaviour
 {
@@ -9,16 +10,17 @@ public class GameGenerator : MonoBehaviour
     public PlayerObject playerPrefab;
     public ItemObject itemPrefab;
     public GameConfig gameConfig;
-
+    public TextMeshProUGUI showtimeText;
+    public TextMeshProUGUI teamScoreListText;
+    public bool globalFreeze = true;
 
     [SerializeField]
-    public List<TeamScore> teamScoreList = new List<TeamScore>();
-    public float remainingTime;
-
+    private List<TeamScore> teamScoreList = new List<TeamScore>();
+    private float countdownTime = 3.0f;
+    private float showTime;
     public int groundObjectCount = 0;
-
+    private float remainingTime;
     private PlayerSelectionResult playerSelectionResult;
-
     private Dictionary<Vector2, GroundObject> groundObjects;
 
     void Start()
@@ -32,7 +34,7 @@ public class GameGenerator : MonoBehaviour
         GenerateItems();
         AdjustCamera();
         groundObjectCount = groundObjects.Values.Count(x => !x.isWall);
-        remainingTime = gameConfig.configData.gametime;
+        remainingTime = gameConfig.configData.gametime + countdownTime;
     }
 
     void Update()
@@ -40,14 +42,29 @@ public class GameGenerator : MonoBehaviour
         if (remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
-            //Debug.Log($"Time remaining: {remainingTime} seconds");
-            
-            UpdateTeamScores();
-            
-            if (remainingTime <= 0)
+
+            if (remainingTime < gameConfig.configData.gametime)
             {
-                EndGame();
+                showTime = remainingTime;
+                globalFreeze = false;
+                UpdateTeamScores();
             }
+            else
+            {
+                showTime = remainingTime - gameConfig.configData.gametime;
+            }
+        }
+        else
+        {
+            EndGame();
+        }
+        UpdateUI();
+    }
+    void UpdateTeamScores()
+    {
+        foreach (var teamScore in teamScoreList)
+        {
+            teamScore.score = groundObjects.Values.Count(x => x.team == teamScore.teamId && !x.isWall);
         }
     }
 
@@ -62,17 +79,10 @@ public class GameGenerator : MonoBehaviour
                 Vector2 position = new Vector2(i, j);
                 GroundObject groundObj = Instantiate(groundPrefab, new Vector3(i, j, 0), Quaternion.identity);
                 groundObj.transform.parent = groundParent.transform;
+                groundObj.unOccupiedColor = ColorUtility.TryParseHtmlString(ground.color, out Color color) ? color : new Color(1, 1, 1, 0.5f);
                 groundObj.position = position;
                 groundObjects[position] = groundObj;
             }
-        }
-    }
-
-    void UpdateTeamScores()
-    {
-        foreach (var teamScore in teamScoreList)
-        {
-            teamScore.score = groundObjects.Values.Count(x => x.team == teamScore.teamId && !x.isWall);
         }
     }
 
@@ -120,8 +130,8 @@ public class GameGenerator : MonoBehaviour
             playerObj.transform.localScale = new Vector3(player.location.width, player.location.height, 1);
             playerObj.transform.parent = playerParent.transform;
 
-            playerObj.team = player.team;
-            playerObj.color = ColorUtility.TryParseHtmlString(player.color, out Color color) ? color : Color.white;
+            playerObj.team = playerSelection.playerController.team;
+            playerObj.color = ColorUtility.TryParseHtmlString(playerSelection.playerController.color, out Color color) ? color : Color.white;
             playerObj.skill = player.skill;
 
             playerObj.moveUpKey = ParseKeyCode(playerSelection.playerController.keymap.up);
@@ -152,8 +162,8 @@ public class GameGenerator : MonoBehaviour
 
     void EndGame()
     {
-        // Handle end of game logic here
         Debug.Log("Game Over!");
+        globalFreeze = true;
     }
 
     private void AdjustCamera()
@@ -209,6 +219,29 @@ public class GameGenerator : MonoBehaviour
             default:              
                 throw new System.ArgumentException($"Unsupported key: {key}");
         }
+    }
+
+    void UpdateUI()
+    {
+        // Update showtime text
+        showtimeText.text = $"{showTime:F2}";
+
+        // Process and update teamScoreList text
+        string processedTeamScores = ProcessTeamScores(teamScoreList);
+        teamScoreListText.text = $"{processedTeamScores}";
+    }
+
+    string ProcessTeamScores(List<TeamScore> scores)
+    {
+        int team1Score = scores.FirstOrDefault(ts => ts.teamId == 1)?.score ?? 0;
+        int team2Score = scores.FirstOrDefault(ts => ts.teamId == 2)?.score ?? 0;
+        if (team1Score == 0 && team2Score == 0)
+        {
+            return "0 VS 0";
+        }
+        float team1Percentage = (float)team1Score / (team1Score + team2Score) * 100;
+        float team2Percentage = (float)team2Score / (team1Score + team2Score) * 100;
+        return $"{team1Percentage:F1} VS {team2Percentage:F1}";
     }
 }
 
