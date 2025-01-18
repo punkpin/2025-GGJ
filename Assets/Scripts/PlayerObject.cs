@@ -221,7 +221,7 @@ public class PlayerObject : BaseBubble
 
             if(item==1){
                // 调用ITEM的Use方法
-        Vector3 playerPosition = transform.position;
+               Vector3 playerPosition = transform.position;
 
                 ItemManager.useImem001(playerPosition, PlayeryDirection,moveSpeed,team,gameObject);
             }
@@ -235,8 +235,9 @@ public class PlayerObject : BaseBubble
             }
             else if(item==3)
             {
+                Vector3 playerPosition = transform.position;
                 // 调用ITEM的Use方法
-                 ItemManager.useImem003();
+                ItemManager.useImem003(playerPosition,team);
            
             }
 

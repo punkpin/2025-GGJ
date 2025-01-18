@@ -13,7 +13,6 @@ public class ItmObject : MonoBehaviour
 
 public int maxQueueSize = 4; // 最大队列大小
     public float radius = 5f; // 区域半径
-    public GameObject itemPrefab; // 发放的道具Prefab
     private Queue<Player> playerQueue = new Queue<Player>(); // 玩家队列
     private float timer = 0f; // 计时器
     private bool isTimerRunning = false; // 计时器状态

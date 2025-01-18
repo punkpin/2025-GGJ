@@ -17,7 +17,12 @@ public class ItemManager : MonoBehaviour
     public GameObject bubblePrefab;  // 泡泡的预制体
     public float speedMultiplier = 1.2f;  // 泡泡的速度是玩家速度的1.2倍
     public float bubbleSizeMultiplier = 0.5f;  // 泡泡的大小是玩家的一半
-  
+
+
+
+
+
+
 
     public static ItemManager Instance;
 
@@ -82,13 +87,44 @@ public class ItemManager : MonoBehaviour
         
     }
 
-    
-   public void useImem003()
+
+    public void useImem003(Vector2 centerPosition, int team)
     {
+        // 查找所有在范围内的物体
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(centerPosition, 3f);
 
+        foreach (var hitCollider in hitColliders)
+        {
+            // 确保该物体有Player标签
+            if (hitCollider.CompareTag("Player"))
+            {
+                // 获取该物体上的PlayerObject脚本
+                PlayerObject playerObject = hitCollider.GetComponent<PlayerObject>();
 
-
+                // 检查脚本是否存在
+                if (playerObject != null)
+                {
+                    // 如果team值与传入team值相反，设置速度为0
+                    if (playerObject.team != team)
+                    {
+                        playerObject.moveSpeed = 0;
+                        StartCoroutine(RestoreSpeedAfterDelay(playerObject, 3f));
+                    }
+                }
+            }
+        }
     }
+
+    // 恢复速度的协程
+    private IEnumerator RestoreSpeedAfterDelay(PlayerObject playerObject, float delay)
+    {
+        // 等待指定时间（5秒）
+        yield return new WaitForSeconds(delay);
+
+        // 恢复速度为原始值（假设恢复前速度为原速度，这里可以修改为实际逻辑）
+        playerObject.moveSpeed = 40f; // 恢复原速度（这里假设原速度是5，实际应根据需要来设置）
+    }
+
 
 
     public void SetItem(Vector3 position, int ItemID,int lifetime)
