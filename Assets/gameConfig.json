@@ -1,0 +1,138 @@
+{
+    "gametime": 90,
+    "ground": {
+        "width": 124,
+        "height": 84
+    },
+    "wall": [
+        {
+            "color": "#AAAAAA",
+            "location": {
+                "x": 0,
+                "y": 0,
+                "width": 2,
+                "height": 84
+            }
+        },
+        {
+            "color": "#AAAAAA",
+            "location": {
+                "x": 0,
+                "y": 0,
+                "width": 2,
+                "height": 84
+            }
+        },
+        {
+            "color": "#AAAAAA",
+            "location": {
+                "x": 0,
+                "y": 0,
+                "width": 2,
+                "height": 84
+            }
+        },
+        {
+            "color": "#AAAAAA",
+            "location": {
+                "x": 0,
+                "y": 0,
+                "width": 2,
+                "height": 84
+            }
+        }
+    ],
+    "bombs": {
+        "location": [
+            {
+                "x": 0,
+                "y": 0
+            }
+        ]
+    },
+    "players": [
+        {
+            "name": "a",
+            "team": 1,
+            "color": "#000000",
+            "skill": "a",
+            "location": {
+                "x": 10,
+                "y": 10,
+                "width": 8,
+                "height": 8
+            },
+            "keymap": {
+                "up": "w",
+                "down": "s",
+                "left": "a",
+                "right": "d",
+                "skill": "q",
+                "item": "e"
+            }
+        },
+        {
+            "name": "b",
+            "team": 2,
+            "color": "#FFFFFF",
+            "skill": "b",
+            "location": {
+                "x": 40,
+                "y": 40,
+                "width": 8,
+                "height": 8
+            },
+            "keymap": {
+                "up": "i",
+                "down": "k",
+                "left": "j",
+                "right": "l",
+                "skill": "u",
+                "item": "o"
+            }
+        }
+    ],
+    "items": [
+        {
+            "size": 6,
+            "name": "bubble",
+            "color": "#CCAA00",
+            "spawntime": [
+                {
+                    "min": 10,
+                    "max": 20
+                },
+                {
+                    "min": 20,
+                    "max": 30
+                }
+            ],
+            "location": {
+                "x": 84,
+                "y": 42,
+                "width": 4,
+                "height": 4
+            }
+        },
+        {
+            "name": "speed",
+            "color": "#CCAA00",
+            "spawntime": [
+                {
+                    "min": 10,
+                    "max": 20
+                },
+                {
+                    "min": 20,
+                    "max": 30
+                }
+            ],
+            "location": {
+                "x": 84,
+                "y": 42,
+                "width": 4,
+                "height": 4
+            }
+        }
+    ]
+}
