@@ -19,17 +19,29 @@ public class PlayerController
 {
     public string name;
     public Keymap keymap;
+    public Location location;
+    public int textlocation;
 }
 
 [Serializable]
-public class PlayerControllerConfigData
+public class PlayerSelectionConfigData
 {
     public List<PlayerController> controllers;
+    public List<Skill> skills;
 }
 
-public class PlayerControllerConfig : MonoBehaviour
+[Serializable]
+public class Skill
 {
-    public PlayerControllerConfigData configData;
+    public string skill;
+    public Location location;
+
+    public string skillMessage;
+}
+
+public class PlayerSelectionConfig : MonoBehaviour
+{
+    public PlayerSelectionConfigData configData;
     public string jsonFilePath;
 
     void Awake()
@@ -40,6 +52,6 @@ public class PlayerControllerConfig : MonoBehaviour
     void LoadConfig()
     {
         string json = File.ReadAllText(jsonFilePath);
-        configData = JsonUtility.FromJson<PlayerControllerConfigData>(json);
+        configData = JsonUtility.FromJson<PlayerSelectionConfigData>(json);
     }
 }

@@ -1,0 +1,124 @@
+{
+    "controllers": 
+    [
+        {
+            "name": "a1",
+            "keymap": {
+                "up": "s",
+                "down": "x",
+                "left": "z",
+                "right": "c",
+                "skill": "a",
+                "item": "d"
+            },
+            "location": {
+                "x": 0,
+                "y": 1,
+                "width": 4,
+                "height": 4
+            },
+            "textlocation" : 0
+        },
+        {
+            "name": "b1",
+            "keymap": {
+                "up": "2",
+                "down": "w",
+                "left": "q",
+                "right": "e",
+                "skill": "1",
+                "item": "3"
+            },
+            "location": {
+                "x": 5,
+                "y": 1,
+                "width": 4,
+                "height": 4
+            },
+            "textlocation" : 1
+        },
+        {
+            "name": "b2",
+            "keymap": {
+                "up": "l",
+                "down": ".",
+                "left": ",",
+                "right": "/",
+                "skill": "k",
+                "item": ";"
+            },
+            "location": {
+                "x": 8,
+                "y": 1,
+                "width": 4,
+                "height": 4
+            },
+            "textlocation" : 2
+        },
+        {
+            "name": "a2",
+            "keymap": {
+                "up": "0",
+                "down": "p",
+                "left": "o",
+                "right": "[",
+                "skill": "9",
+                "item": "-"
+            },
+            "location": {
+                "x": 12,
+                "y": 1,
+                "width": 4,
+                "height": 4
+            },
+            "textlocation" : 3
+        }
+    ],
+    "skills":
+    [
+        {
+            "skill": "fly",
+            "location": 
+            {
+                "x": 0,
+                "y": 5,
+                "width": 4,
+                "height": 4
+            },
+            "skillMessage": "fly"
+        },
+        {
+            "skill": "fast",
+            "location": 
+            {
+                "x": 4,
+                "y": 5,
+                "width": 4,
+                "height": 4
+            },
+            "skillMessage": "fast"
+        },
+        {
+            "skill": "large",
+            "location": 
+            {
+                "x": 8,
+                "y": 5,
+                "width": 4,
+                "height": 4
+            },
+            "skillMessage": "large"
+        },
+        {
+            "skill": "claw",
+            "location": 
+            {
+                "x": 12,
+                "y": 5,
+                "width": 4,
+                "height": 4
+            },
+            "skillMessage": "claw"
+        }
+    ]
+}
