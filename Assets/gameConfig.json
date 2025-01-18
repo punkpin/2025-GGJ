@@ -42,93 +42,59 @@
             }
         }
     ],
-    "bombs": {
-        "location": [
-            {
-                "x": 0,
-                "y": 0
+    "bombs": [
+        {
+            "location": {
+                "x": 10,
+                "y": 10,
+                "width": 4,
+                "height": 4
             }
-        ]
-    },
+        }
+    ],
     "players": [
         {
-            "name": "a1",
             "team": 1,
             "color": "#CCCC00",
-            "skill": "fly",
-            "location": {
-                "x": 10,
-                "y": 10,
-                "width": 8,
-                "height": 8
-            },
-            "keymap": {
-                "up": "s",
-                "down": "x",
-                "left": "z",
-                "right": "c",
-                "skill": "a",
-                "item": "d"
-            }
-        },
-        {
-            "name": "b1",
-            "team": 2,
-            "color": "#0000CC",
-            "skill": "large",
-            "location": {
-                "x": 100,
-                "y": 10,
-                "width": 8,
-                "height": 8
-            },
-            "keymap": {
-                "up": "2",
-                "down": "w",
-                "left": "q",
-                "right": "e",
-                "skill": "1",
-                "item": "3"
-            }
-        },
-        {
-            "name": "a2",
-            "team": 1,
-            "color": "#999900",
-            "skill": "claw",
-            "location": {
-                "x": 10,
-                "y": 60,
-                "width": 8,
-                "height": 8
-            },
-            "keymap": {
-                "up": "l",
-                "down": ".",
-                "left": ",",
-                "right": "/",
-                "skill": "k",
-                "item": ";"
-            }
-        },
-        {
-            "name": "b2",
-            "team": 2,
-            "color": "#000099",
             "skill": "fast",
             "location": {
+                "x": 10,
+                "y": 10,
+                "width": 8,
+                "height": 8
+            }
+        },
+        {
+            "team": 2,
+            "color": "#0000CC",
+            "skill": "fly",
+            "location": {
+                "x": 100,
+                "y": 10,
+                "width": 8,
+                "height": 8
+            }
+        },
+        {
+            "team": 2,
+            "color": "#999900",
+            "skill": "large",
+            "location": {
+                "x": 10,
+                "y": 60,
+                "width": 8,
+                "height": 8
+            }
+        },
+        {
+            "team": 1,
+            "color": "#000099",
+            "skill": "claw",
+            "location": {
                 "x": 100,
                 "y": 60,
                 "width": 8,
                 "height": 8
-            },
-            "keymap": {
-                "up": "0",
-                "down": "p",
-                "left": "o",
-                "right": "[",
-                "skill": "9",
-                "item": "-"
             }
         }
     ],

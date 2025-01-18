@@ -29,30 +29,17 @@ public class Wall
 [Serializable]
 public class Bomb
 {
-    public bool over;
-    public List<Vector2> location;
-}
-
-[Serializable]
-public class Keymap
-{
-    public string up;
-    public string down;
-    public string left;
-    public string right;
-    public string skill;
-    public string item;
+    public Location location;
 }
 
 [Serializable]
 public class Player
 {
     public string name;
-    public string team;
+    public int team;
     public string color;
     public string skill;
     public Location location;
-    public Keymap keymap;
 }
 
 [Serializable]
@@ -78,7 +65,7 @@ public class GameConfigData
     public int gametime;
     public Ground ground;
     public List<Wall> walls;
-    public Bomb bombs;
+    public List<Bomb> bombs;
     public List<Player> players;
     public List<Item> items;
 }
@@ -88,7 +75,7 @@ public class GameConfig : MonoBehaviour
     public GameConfigData configData;
     public string jsonFilePath;
 
-    void Start()
+    void Awake()
     {
         LoadConfig();
     }
