@@ -1,8 +1,8 @@
 {
     "gametime": 90,
     "ground": {
-        "width": 124,
-        "height": 84
+        "width": 154,
+        "height": 104
     },
     "walls": [
         {
@@ -11,7 +11,7 @@
                 "x": 0,
                 "y": 0,
                 "width": 2,
-                "height": 84
+                "height": 104
             }
         },
         {
@@ -19,24 +19,24 @@
             "location": {
                 "x": 0,
                 "y": 0,
-                "width": 124,
+                "width": 154,
                 "height": 2
             }
         },
         {
-            "color": "#6600AA",
+            "color": "#AAAAAA",
             "location": {
-                "x": 122,
+                "x": 152,
                 "y": 0,
                 "width": 2,
-                "height": 84
+                "height": 104
             }
         },
         {
             "color": "#AAAAAA",
             "location": {
                 "x": 0,
-                "y": 82,
+                "y": 102,
                 "width": 124,
                 "height": 2
             }
@@ -55,7 +55,7 @@
             "name": "a1",
             "team": 1,
             "color": "#CCCC00",
-            "skill": "a",
+            "skill": "fly",
             "location": {
                 "x": 10,
                 "y": 10,
@@ -75,7 +75,7 @@
             "name": "b1",
             "team": 2,
             "color": "#0000CC",
-            "skill": "b",
+            "skill": "large",
             "location": {
                 "x": 100,
                 "y": 10,
