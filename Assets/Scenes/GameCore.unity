@@ -274,6 +274,7 @@ MonoBehaviour:
     ground:
       width: 0
       height: 0
+      color: 
     walls: []
     bombs:
     - location:
@@ -323,6 +324,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 1266810936306238378, guid: 987569572b4317f47b44d66094123a16, type: 3}
   itemPrefab: {fileID: 398149434631041918, guid: bec628d8059c9f14ab86ccd03cbff0dc, type: 3}
   gameConfig: {fileID: 640238360}
+  gameResult: {fileID: -5380668176651662940, guid: df3d32260d9504545a928e62109f3f7e, type: 3}
   showtimeText: {fileID: 1129628667}
   teamScoreListText: {fileID: 1519312264}
   globalFreeze: 1

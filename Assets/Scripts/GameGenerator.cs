@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 
@@ -10,6 +11,7 @@ public class GameGenerator : MonoBehaviour
     public PlayerObject playerPrefab;
     public ItemObject itemPrefab;
     public GameConfig gameConfig;
+    public GameResult gameResult;
     public TextMeshProUGUI showtimeText;
     public TextMeshProUGUI teamScoreListText;
     public bool globalFreeze = true;
@@ -164,6 +166,17 @@ public class GameGenerator : MonoBehaviour
     {
         Debug.Log("Game Over!");
         globalFreeze = true;
+        GameResult gameResultObject = Instantiate(gameResult, new Vector3(0, 0, 0), Quaternion.identity);
+        int team1Score = teamScoreList.FirstOrDefault(ts => ts.teamId == 1)?.score ?? 0;
+        int team2Score = teamScoreList.FirstOrDefault(ts => ts.teamId == 2)?.score ?? 0;
+
+        gameResultObject.team1Score = (float)team1Score / (team1Score + team2Score) * 100;
+        gameResultObject.team2Score = (float)team2Score / (team1Score + team2Score) * 100;
+        gameResultObject.team1Status = team1Score > team2Score ? "Victory" : "Defeat";
+        gameResultObject.team2Status = team1Score < team2Score ? "Victory" : "Defeat";
+
+        Destroy(playerSelectionResult.gameObject);
+        SceneManager.LoadScene("GameOver");
     }
 
     private void AdjustCamera()
