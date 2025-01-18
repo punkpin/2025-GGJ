@@ -7,7 +7,7 @@ public class GroundObject : MonoBehaviour
 
     public int team;
     public Color unOccupiedColor = new Color(1, 1, 1, 0.5f);
-    public Color defaultWallColor = Color.gray;
+    public Color wallColor = Color.gray;
     public Bounds initialBounds;
     public SpriteRenderer squareRenderer;
     private Color currentColor;
@@ -23,7 +23,7 @@ public class GroundObject : MonoBehaviour
         rb.bodyType = isWall ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
         rb.gravityScale = 0; // No gravity effect
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        currentColor = isWall ? defaultWallColor : unOccupiedColor;
+        currentColor = isWall ? wallColor : unOccupiedColor;
         squareCollider.enabled = true;
         squareCollider.isTrigger = !isWall;
     }
@@ -39,9 +39,7 @@ public class GroundObject : MonoBehaviour
     public void SetWall(bool wall, Color inputColor)
     {
         isWall = wall;
-        currentColor = inputColor;
-        squareCollider.isTrigger = !isWall;
-        rb.bodyType = isWall ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
+        wallColor = inputColor;
     }
 
     public void SetTeam(int inputTeam, Color inputColor)
