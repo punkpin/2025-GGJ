@@ -187,7 +187,6 @@ public class PlayerObject : BaseBubble
     {
         // Check the collided object
         GameObject collidedObject = collision.gameObject;
-        Debug.Log("Collided with: " + collidedObject.name);
 
         // Example: Check if the collided object is a GroundObject
         PlayerObject collidedPlayerObject = collidedObject.GetComponent<PlayerObject>();

@@ -40,8 +40,7 @@ public class GameGenerator : MonoBehaviour
         if (remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
-            //Debug.Log($"Time remaining: {remainingTime} seconds");
-            
+                        
             UpdateTeamScores();
             
             if (remainingTime <= 0)

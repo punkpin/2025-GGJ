@@ -1,4 +1,31 @@
 {
+    "controllerLocations":
+    [
+        {
+            "x": 0,
+            "y": 1,
+            "width": 4,
+            "height": 4
+        },
+        {
+            "x": 5,
+            "y": 1,
+            "width": 4,
+            "height": 4
+        },
+        {
+            "x": 10,
+            "y": 1,
+            "width": 4,
+            "height": 4
+        },
+        {
+            "x": 15,
+            "y": 1,
+            "width": 4,
+            "height": 4
+        }
+    ],
     "controllers": 
     [
         {
@@ -11,12 +38,7 @@
                 "skill": "a",
                 "item": "d"
             },
-            "location": {
-                "x": 0,
-                "y": 1,
-                "width": 4,
-                "height": 4
-            },
+            "location": 0,
             "textlocation" : 0
         },
         {
@@ -29,12 +51,7 @@
                 "skill": "1",
                 "item": "3"
             },
-            "location": {
-                "x": 4,
-                "y": 1,
-                "width": 4,
-                "height": 4
-            },
+            "location": 1,
             "textlocation" : 1
         },
         {
@@ -47,12 +64,7 @@
                 "skill": "k",
                 "item": ";"
             },
-            "location": {
-                "x": 8,
-                "y": 1,
-                "width": 4,
-                "height": 4
-            },
+            "location": 2,
             "textlocation" : 2
         },
         {
@@ -65,59 +77,57 @@
                 "skill": "9",
                 "item": "-"
             },
-            "location": {
-                "x": 12,
-                "y": 1,
-                "width": 4,
-                "height": 4
-            },
+            "location": 3,
             "textlocation" : 3
+        }
+    ],
+    "skillLocations":
+    [
+        {
+            "x": 0,
+            "y": 6,
+            "width": 4,
+            "height": 4
+        },
+        {
+            "x": 5,
+            "y": 6,
+            "width": 4,
+            "height": 4
+        },
+        {
+            "x": 10,
+            "y": 6,
+            "width": 4,
+            "height": 4
+        },
+        {
+            "x": 15,
+            "y": 6,
+            "width": 4,
+            "height": 4
         }
     ],
     "skills":
     [
         {
             "skill": "fly",
-            "location": 
-            {
-                "x": 0,
-                "y": 5,
-                "width": 4,
-                "height": 4
-            },
+            "location": 0,
             "skillMessage": "fly"
         },
         {
             "skill": "fast",
-            "location": 
-            {
-                "x": 4,
-                "y": 5,
-                "width": 4,
-                "height": 4
-            },
+            "location": 1,
             "skillMessage": "fast"
         },
         {
             "skill": "large",
-            "location": 
-            {
-                "x": 8,
-                "y": 5,
-                "width": 4,
-                "height": 4
-            },
+            "location": 2,
             "skillMessage": "large"
         },
         {
             "skill": "claw",
-            "location": 
-            {
-                "x": 12,
-                "y": 5,
-                "width": 4,
-                "height": 4
-            },
+            "location": 3,
             "skillMessage": "claw"
         }
     ]

@@ -20,37 +20,42 @@ public class PlayerSelectHandler : MonoBehaviour
 
     void Update()
     {
-        // if (playerSelectionResult.IsReady())
-        // {
-        //     SceneManager.LoadScene("MainScene");
-        // }
+        if (playerSelectionResult.IsReady())
+        {
+            SceneManager.LoadScene("MainScene");
+        }
     }
 
     private void GeneratePlayers()
     {
+        List<Location> controllerLocations = playerSelectionConfig.configData.controllerLocations;
         foreach (var controller in playerSelectionConfig.configData.controllers)
         {
-            var playerObject = Instantiate(playerControllerObject, new Vector3(controller.location.x + 0.5f * controller.location.width, controller.location.y + 0.5f * controller.location.height, -1), Quaternion.identity);
-            playerObject.transform.localScale = new Vector3(controller.location.width, controller.location.height, 1);
+            var playerObject = Instantiate(playerControllerObject, new Vector3(controllerLocations[controller.location].x + 0.5f * controllerLocations[controller.location].width, controllerLocations[controller.location].y + 0.5f * controllerLocations[controller.location].height, -1), Quaternion.identity);
+            playerObject.transform.localScale = new Vector3(controllerLocations[controller.location].width, controllerLocations[controller.location].height, 1);
 
-            playerObject.locationX = controller.location.x;
-            playerObject.locationY = controller.location.y;
+            playerObject.index = controller.location;
+            playerObject.location = controller.location;
             playerObject.name = controller.name;
-            playerObject.textlocation = controller.textlocation;
+            playerObject.textlocation = controller.textLocation;
+            playerObject.playerSelectionConfig = playerSelectionConfig;
+            playerObject.playerSelectionResult = playerSelectionResult;
 
             playerObject.moveLeftKey = ParseKeyCode(controller.keymap.left);
             playerObject.moveRightKey = ParseKeyCode(controller.keymap.right);
+            playerObject.useSkillKey = ParseKeyCode(controller.keymap.skill);
         }
     }
     private void GenerateSkills()
     {
+        List<Location> skillLocations = playerSelectionConfig.configData.skillLocations;
+
         foreach (var skill in playerSelectionConfig.configData.skills)
         {
-            var skillObject = Instantiate(skillSelectObject, new Vector3(skill.location.x + 0.5f * skill.location.width, skill.location.y + 0.5f * skill.location.height, -0.9f), Quaternion.identity);
-            skillObject.transform.localScale = new Vector3(skill.location.width, skill.location.height, 1.0f);
-            
-            skillObject.locationX = skill.location.x;
-            skillObject.locationY = skill.location.y;
+            var skillObject = Instantiate(skillSelectObject, new Vector3(skillLocations[skill.location].x + 0.5f * skillLocations[skill.location].width, skillLocations[skill.location].y + 0.5f * skillLocations[skill.location].height, -1), Quaternion.identity);
+            skillObject.transform.localScale = new Vector3(skillLocations[skill.location].width, skillLocations[skill.location].height, 1);
+
+            skillObject.location = skill.location;
             skillObject.skill = skill.skill;
             skillObject.skillMessage = skill.skillMessage;
         }

@@ -19,14 +19,16 @@ public class PlayerController
 {
     public string name;
     public Keymap keymap;
-    public Location location;
-    public int textlocation;
+    public int location;
+    public int textLocation;
 }
 
 [Serializable]
 public class PlayerSelectionConfigData
 {
+    public List<Location> controllerLocations;
     public List<PlayerController> controllers;
+    public List<Location> skillLocations;
     public List<Skill> skills;
 }
 
@@ -34,7 +36,7 @@ public class PlayerSelectionConfigData
 public class Skill
 {
     public string skill;
-    public Location location;
+    public int location;
     public string skillMessage;
 }
 

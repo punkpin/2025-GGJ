@@ -14,6 +14,7 @@ public class PlayerSelectionResult : MonoBehaviour
     
     public bool Set(string skill, PlayerController playerController)
     {
+        Debug.Log("Set " + skill + " for " + playerController.name);
         if (playerSelections.Any(ps => ps.playerController.name == playerController.name || ps.skill == skill))
         {
             return false;

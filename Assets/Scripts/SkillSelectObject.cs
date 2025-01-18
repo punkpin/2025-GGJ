@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SkillSelectObject : MonoBehaviour
 {
-    public int locationX;
-    public int locationY;
+    public int location;
     public string skill;
     public string skillMessage;
 
