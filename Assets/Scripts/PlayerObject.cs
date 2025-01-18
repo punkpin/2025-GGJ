@@ -8,7 +8,17 @@ public class PlayerObject : BaseBubble
     public Color color;
     public int team;
     public string skill;
+
+
+//item
+    public int TestItem;
     public int item;
+//item
+
+
+   Vector2 PlayeryDirection;
+
+
     public ItemManager ItemManager;
     public float colliderSize = 4.0f;
     public float skillCoolDown = 10.0f;
@@ -38,7 +48,17 @@ public class PlayerObject : BaseBubble
     {
         base.Start();
        
-        ItemManager itemManager = ItemManager.Instance;
+//ITEM 
+       SetItem(TestItem);
+        ItemManager itemManager = ItemManager.Instance;  
+         GameObject targetObject = GameObject.Find("itemManager");
+        if (targetObject != null)
+        {
+            ItemManager = targetObject.GetComponent<ItemManager>();
+        }
+//
+
+
 
         defaultSpeed = moveSpeed;
         defaultColliderSize = colliderSize;
@@ -65,7 +85,7 @@ public class PlayerObject : BaseBubble
         {
             moveDirection.x += 1;
         }
-
+         PlayeryDirection=moveDirection;
         if (isConquerEnable)
         {
             Conquer();
@@ -183,6 +203,9 @@ public class PlayerObject : BaseBubble
 
             if(item==1){
                // 调用ITEM的Use方法
+        Vector3 playerPosition = transform.position;
+
+                ItemManager.useImem001(playerPosition, PlayeryDirection,moveSpeed,team,gameObject);
             }
             else if(item==2)
             {
@@ -193,6 +216,7 @@ public class PlayerObject : BaseBubble
             else if(item==3)
             {
                 // 调用ITEM的Use方法
+                 ItemManager.useImem003();
             }
 
              Debug.Log("Item ID USED:"+item);
@@ -223,6 +247,9 @@ public class PlayerObject : BaseBubble
     {
         // Check the collided object
         GameObject collidedObject = collision.gameObject;
+         
+        
+
 
         Debug.Log("Collided with: " + collidedObject.name);
 
@@ -237,4 +264,6 @@ public class PlayerObject : BaseBubble
             }
         }
     }
+   
+
 }
