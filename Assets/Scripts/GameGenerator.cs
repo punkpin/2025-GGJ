@@ -10,6 +10,8 @@ public class GameGenerator : MonoBehaviour
     public ItemObject itemPrefab;
     public GameConfig gameConfig;
 
+    public PlayerSelectionResult playerSelectionResult;
+
     [SerializeField]
     public List<TeamScore> teamScoreList = new List<TeamScore>();
     public float remainingTime;
@@ -94,37 +96,38 @@ public class GameGenerator : MonoBehaviour
     void GenerateBombs()
     {
         var bombs = gameConfig.configData.bombs;
-        if (bombs.over)
+        GameObject bombParent = new GameObject("BombParent");
+        foreach (var bomb in bombs)
         {
-            GameObject bombParent = new GameObject("BombParent");
-            foreach (var location in bombs.location)
-            {
-                BombObject bomb = Instantiate(bombPrefab, new Vector3(location.x, location.y, -1), Quaternion.identity);
-                bomb.transform.parent = bombParent.transform;
-            }
+            BombObject bombObject = Instantiate(bombPrefab, new Vector3(bomb.location.x + 0.5f * bomb.location.width, bomb.location.y + 0.5f * bomb.location.height, -1), Quaternion.identity);
+            bombObject.transform.parent = bombParent.transform;
         }
     }
 
     void GeneratePlayers()
     {
         var players = gameConfig.configData.players;
+        List<PlayerSelection> playerSelections = playerSelectionResult.playerSelections;
         GameObject playerParent = new GameObject("PlayerParent");
         foreach (var player in players)
         {
+            PlayerSelection playerSelection = playerSelections.FirstOrDefault(ps => ps.skill == player.skill);
+            
             PlayerObject playerObj = Instantiate(playerPrefab, new Vector3(player.location.x + 0.5f * player.location.width, player.location.y + 0.5f * player.location.width, -2), Quaternion.identity);
+            playerObj.name = playerSelection.playerController.name;
             playerObj.transform.localScale = new Vector3(player.location.width, player.location.height, 1);
             playerObj.transform.parent = playerParent.transform;
 
-            playerObj.team = int.Parse(player.team);
+            playerObj.team = player.team;
             playerObj.color = ColorUtility.TryParseHtmlString(player.color, out Color color) ? color : Color.white;
             playerObj.skill = player.skill;
 
-            playerObj.moveUpKey = ParseKeyCode(player.keymap.up);
-            playerObj.moveDownKey = ParseKeyCode(player.keymap.down);
-            playerObj.moveLeftKey = ParseKeyCode(player.keymap.left);
-            playerObj.moveRightKey = ParseKeyCode(player.keymap.right);
-            playerObj.useSkillKey = ParseKeyCode(player.keymap.skill);
-            playerObj.useItemKey = ParseKeyCode(player.keymap.item);
+            playerObj.moveUpKey = ParseKeyCode(playerSelection.playerController.keymap.up);
+            playerObj.moveDownKey = ParseKeyCode(playerSelection.playerController.keymap.down);
+            playerObj.moveLeftKey = ParseKeyCode(playerSelection.playerController.keymap.left);
+            playerObj.moveRightKey = ParseKeyCode(playerSelection.playerController.keymap.right);
+            playerObj.useSkillKey = ParseKeyCode(playerSelection.playerController.keymap.skill);
+            playerObj.useItemKey = ParseKeyCode(playerSelection.playerController.keymap.item);
 
             if (!teamScoreList.Any(ts => ts.teamId == playerObj.team))
             {

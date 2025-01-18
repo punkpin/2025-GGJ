@@ -177,7 +177,7 @@ public class PlayerObject : BaseBubble
         foreach (Collider2D collider in colliders)
         {
             GroundObject groundObject = collider.GetComponent<GroundObject>();
-            if (groundObject != null && !groundObject.isWall && groundObject.team != team)
+            if (groundObject != null && !groundObject.isWall)
             {
                 groundObject.SetTeam(team, color);
             }
