@@ -8,6 +8,7 @@ public class PlayerObject : BaseBubble
     public int team;
     public string skill;
     public string item;
+    public float collider_size = 4.0f;
 
     public KeyCode moveUpKey = KeyCode.W;
     public KeyCode moveDownKey = KeyCode.S;
@@ -71,7 +72,7 @@ public class PlayerObject : BaseBubble
 
     private void Conquer()
     {
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1, 1), 0);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(collider_size, collider_size), 0);
         foreach (Collider2D collider in colliders)
         {
             GroundObject groundObject = collider.GetComponent<GroundObject>();
