@@ -102,8 +102,9 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   team: 0
   skill: 
-  TestItem: 1
+  TestItem: 2
   item: 0
+  isBoosted: 0
   ItemManager: {fileID: 0}
   colliderSize: 4
   skillCoolDown: 10
