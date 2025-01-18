@@ -36,7 +36,7 @@ public class GameGenerator : MonoBehaviour
         if (remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
-            Debug.Log($"Time remaining: {remainingTime} seconds");
+            //Debug.Log($"Time remaining: {remainingTime} seconds");
             
             UpdateTeamScores();
             
@@ -171,7 +171,7 @@ public class GameGenerator : MonoBehaviour
         {
             return KeyCode.Alpha0 + number;
         }
-        
+
         if (System.Enum.TryParse(key.ToLower(), true, out KeyCode keyCode))
         {
             return keyCode;
