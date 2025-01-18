@@ -8,11 +8,13 @@ public class PlayerObject : BaseBubble
     public Color color;
     public int team;
     public string skill;
-
+    
 
 //item
     public int TestItem;
     public int item;
+
+    public bool isBoosted;
 //item
 
 
@@ -189,9 +191,17 @@ public class PlayerObject : BaseBubble
         }
     }
 
+
+
+    /// <summary>
+/// itme
+/// </summary>
+
+
     public void SetItem(int itemNumber)
     {
         item = itemNumber;
+        Debug.Log("获得了物品"+itemNumber);
     }
 
     private void UseItem()
@@ -211,12 +221,15 @@ public class PlayerObject : BaseBubble
             {
                 // 调用ITEM的Use方法
 
-                    ItemManager.useImem002();
+                   // ItemManager.useImem002(PlayerSpeed,gameObject);
+
+                    BoostSpeed();
             }
             else if(item==3)
             {
                 // 调用ITEM的Use方法
                  ItemManager.useImem003();
+           
             }
 
              Debug.Log("Item ID USED:"+item);
@@ -228,6 +241,30 @@ public class PlayerObject : BaseBubble
         }
    
     }
+
+
+ void BoostSpeed()
+    {
+        
+        isBoosted = true;
+        moveSpeed = moveSpeed * 1.25f; // 将速度提升为基础速度的1.5倍
+        Debug.Log("Speed boosted to: " + moveSpeed);
+
+        // 启动定时器，5秒后恢复基础速度
+        Invoke("ResetSpeed", 5f);
+    }
+
+
+     void ResetSpeed()
+    {
+        moveSpeed = 40f; // 恢复到基础速度
+        Debug.Log("Speed reset to base: " + moveSpeed);
+        isBoosted = false;
+    }
+/// <summary>
+/// itme
+/// </summary>
+
 
     private void Conquer()
     {

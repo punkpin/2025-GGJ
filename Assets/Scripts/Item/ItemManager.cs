@@ -6,6 +6,14 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
 
+      // 物体列表，用于存储生成的物体
+    private List<GameObject> objectList = new List<GameObject>();
+
+    // 物体预制体（将需要的物体拖到此变量中）
+     public GameObject[] prefabs; // 存储所有的预制体
+
+
+
     public GameObject bubblePrefab;  // 泡泡的预制体
     public float speedMultiplier = 1.2f;  // 泡泡的速度是玩家速度的1.2倍
     public float bubbleSizeMultiplier = 0.5f;  // 泡泡的大小是玩家的一半
@@ -67,16 +75,50 @@ public class ItemManager : MonoBehaviour
     }
 
 
-   public void useImem002()
+   public void useImem002(float PlayerSpeed,object gameObject)
     {
 
-
-
+ 
+        
     }
+
+    
    public void useImem003()
     {
 
 
 
     }
+
+
+    public void SetItem(Vector3 position, int ItemID,int lifetime)
+    {
+  
+      // 生成物体并设置位置
+            GameObject newObject = Instantiate(prefabs[ItemID], position, Quaternion.identity);
+            
+            // 将物体添加到列表中
+            objectList.Add(newObject);
+            
+            // 启动计时器处理生命周期
+            StartCoroutine(DestroyAfterTime(newObject, lifetime));
+        
+
+    }
+
+
+// Coroutine 处理物体生命周期
+    private IEnumerator DestroyAfterTime(GameObject obj, float lifetime)
+    {
+        // 等待生命周期结束
+        yield return new WaitForSeconds(lifetime);
+        
+        // 销毁物体
+        Destroy(obj);
+        
+        // 从列表中移除已销毁的物体
+        objectList.Remove(obj);
+    }
+
+
 }
