@@ -15,8 +15,6 @@ public class PlayerObject : BaseBubble
 
     public float freezeTimeRemaining;
 
-    public float skillCoolDown;
-
     public KeyCode moveUpKey = KeyCode.W;
     public KeyCode moveDownKey = KeyCode.S;
     public KeyCode moveLeftKey = KeyCode.A;
@@ -104,6 +102,7 @@ public class PlayerObject : BaseBubble
     {
         if (skillTimeRemaining > 0 || skillCoolDown > 0)
         {
+            Debug.Log("Skill is unavailable");
             return;
         }
         switch (skill)
