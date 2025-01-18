@@ -1,0 +1,178 @@
+{
+    "gametime": 90,
+    "ground": {
+        "width": 124,
+        "height": 84
+    },
+    "walls": [
+        {
+            "color": "#AAAAAA",
+            "location": {
+                "x": 0,
+                "y": 0,
+                "width": 2,
+                "height": 84
+            }
+        },
+        {
+            "color": "#AAAAAA",
+            "location": {
+                "x": 0,
+                "y": 0,
+                "width": 124,
+                "height": 2
+            }
+        },
+        {
+            "color": "#6600AA",
+            "location": {
+                "x": 122,
+                "y": 0,
+                "width": 2,
+                "height": 84
+            }
+        },
+        {
+            "color": "#AAAAAA",
+            "location": {
+                "x": 0,
+                "y": 82,
+                "width": 124,
+                "height": 2
+            }
+        }
+    ],
+    "bombs": {
+        "location": [
+            {
+                "x": 0,
+                "y": 0
+            }
+        ]
+    },
+    "players": [
+        {
+            "name": "a1",
+            "team": 1,
+            "color": "#CCCC00",
+            "skill": "a",
+            "location": {
+                "x": 10,
+                "y": 10,
+                "width": 8,
+                "height": 8
+            },
+            "keymap": {
+                "up": "s",
+                "down": "x",
+                "left": "z",
+                "right": "c",
+                "skill": "a",
+                "item": "d"
+            }
+        },
+        {
+            "name": "b1",
+            "team": 2,
+            "color": "#0000CC",
+            "skill": "b",
+            "location": {
+                "x": 100,
+                "y": 10,
+                "width": 8,
+                "height": 8
+            },
+            "keymap": {
+                "up": "2",
+                "down": "w",
+                "left": "q",
+                "right": "e",
+                "skill": "1",
+                "item": "3"
+            }
+        },
+        {
+            "name": "a2",
+            "team": 1,
+            "color": "#999900",
+            "skill": "c",
+            "location": {
+                "x": 10,
+                "y": 60,
+                "width": 8,
+                "height": 8
+            },
+            "keymap": {
+                "up": "l",
+                "down": ".",
+                "left": ",",
+                "right": "/",
+                "skill": "k",
+                "item": ";"
+            }
+        },
+        {
+            "name": "b2",
+            "team": 2,
+            "color": "#000099",
+            "skill": "d",
+            "location": {
+                "x": 100,
+                "y": 60,
+                "width": 8,
+                "height": 8
+            },
+            "keymap": {
+                "up": "0",
+                "down": "p",
+                "left": "o",
+                "right": "[",
+                "skill": "9",
+                "item": "-"
+            }
+        }
+    ],
+    "items": [
+        {
+            "size": 6,
+            "name": "bubble",
+            "color": "#CCAA00",
+            "spawntime": [
+                {
+                    "min": 10,
+                    "max": 20
+                },
+                {
+                    "min": 20,
+                    "max": 30
+                }
+            ],
+            "location": {
+                "x": 84,
+                "y": 42,
+                "width": 4,
+                "height": 4
+            }
+        },
+        {
+            "name": "speed",
+            "color": "#CCAA00",
+            "spawntime": [
+                {
+                    "min": 10,
+                    "max": 20
+                },
+                {
+                    "min": 20,
+                    "max": 30
+                }
+            ],
+            "location": {
+                "x": 84,
+                "y": 42,
+                "width": 4,
+                "height": 4
+            }
+        }
+    ]
+}
