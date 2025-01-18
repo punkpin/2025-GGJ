@@ -10,7 +10,6 @@ public class GameGenerator : MonoBehaviour
     public ItemObject itemPrefab;
     public GameConfig gameConfig;
 
-    public PlayerSelectionResult playerSelectionResult;
 
     [SerializeField]
     public List<TeamScore> teamScoreList = new List<TeamScore>();
@@ -18,11 +17,14 @@ public class GameGenerator : MonoBehaviour
 
     public int groundObjectCount = 0;
 
+    private PlayerSelectionResult playerSelectionResult;
+
     private Dictionary<Vector2, GroundObject> groundObjects;
 
     void Start()
     {
         groundObjects = new Dictionary<Vector2, GroundObject>();
+        playerSelectionResult = FindObjectOfType<PlayerSelectionResult>();
         GenerateGround();
         GenerateWalls();
         GenerateBombs();

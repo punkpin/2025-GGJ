@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class PlayerSelectionResult : MonoBehaviour
 {
-    // Start is called before the first frame update
     public List<PlayerSelection> playerSelections;
+    
+    public void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+    
     public bool Set(string skill, PlayerController playerController)
     {
-        Debug.Log($"Setting player selection for {playerController.name} with skill {skill}");
         if (playerSelections.Any(ps => ps.playerController.name == playerController.name || ps.skill == skill))
         {
             return false;
