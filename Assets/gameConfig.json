@@ -52,9 +52,9 @@
     },
     "players": [
         {
-            "name": "a",
+            "name": "a1",
             "team": 1,
-            "color": "#000000",
+            "color": "#CCCC00",
             "skill": "a",
             "location": {
                 "x": 10,
@@ -63,32 +63,72 @@
                 "height": 8
             },
             "keymap": {
-                "up": "w",
-                "down": "s",
-                "left": "a",
-                "right": "d",
-                "skill": "q",
-                "item": "e"
+                "up": "s",
+                "down": "x",
+                "left": "z",
+                "right": "c",
+                "skill": "a",
+                "item": "d"
             }
         },
         {
-            "name": "b",
+            "name": "b1",
             "team": 2,
-            "color": "#FFFFFF",
+            "color": "#0000CC",
             "skill": "b",
             "location": {
-                "x": 40,
-                "y": 40,
+                "x": 100,
+                "y": 10,
                 "width": 8,
                 "height": 8
             },
             "keymap": {
-                "up": "i",
-                "down": "k",
-                "left": "j",
-                "right": "l",
-                "skill": "u",
-                "item": "o"
+                "up": "2",
+                "down": "w",
+                "left": "q",
+                "right": "e",
+                "skill": "1",
+                "item": "3"
+            }
+        },
+        {
+            "name": "a2",
+            "team": 1,
+            "color": "#999900",
+            "skill": "c",
+            "location": {
+                "x": 10,
+                "y": 60,
+                "width": 8,
+                "height": 8
+            },
+            "keymap": {
+                "up": "l",
+                "down": ".",
+                "left": ",",
+                "right": "/",
+                "skill": "k",
+                "item": ";"
+            }
+        },
+        {
+            "name": "b2",
+            "team": 2,
+            "color": "#000099",
+            "skill": "d",
+            "location": {
+                "x": 100,
+                "y": 60,
+                "width": 8,
+                "height": 8
+            },
+            "keymap": {
+                "up": "0",
+                "down": "p",
+                "left": "o",
+                "right": "[",
+                "skill": "9",
+                "item": "-"
             }
         }
     ],

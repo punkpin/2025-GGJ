@@ -167,8 +167,12 @@ public class GameGenerator : MonoBehaviour
 
     private KeyCode ParseKeyCode(string key)
     {
-        key = key.ToLower();
-        if (System.Enum.TryParse(key, true, out KeyCode keyCode))
+        if (int.TryParse(key, out int number) && number >= 0 && number <= 9)
+        {
+            return KeyCode.Alpha0 + number;
+        }
+        
+        if (System.Enum.TryParse(key.ToLower(), true, out KeyCode keyCode))
         {
             return keyCode;
         }
@@ -197,7 +201,7 @@ public class GameGenerator : MonoBehaviour
                 return KeyCode.Backslash;
             case "`":
                 return KeyCode.BackQuote;
-            default:
+            default:              
                 throw new System.ArgumentException($"Unsupported key: {key}");
         }
     }
