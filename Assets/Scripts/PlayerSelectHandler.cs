@@ -22,7 +22,7 @@ public class PlayerSelectHandler : MonoBehaviour
     {
         if (playerSelectionResult.IsReady())
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("GameCore");
         }
     }
 
@@ -31,13 +31,12 @@ public class PlayerSelectHandler : MonoBehaviour
         List<Location> controllerLocations = playerSelectionConfig.configData.controllerLocations;
         foreach (var controller in playerSelectionConfig.configData.controllers)
         {
-            var playerObject = Instantiate(playerControllerObject, new Vector3(controllerLocations[controller.location].x + 0.5f * controllerLocations[controller.location].width, controllerLocations[controller.location].y + 0.5f * controllerLocations[controller.location].height, -1), Quaternion.identity);
+            var playerObject = Instantiate(playerControllerObject, new Vector3(controllerLocations[controller.location].x, controllerLocations[controller.location].y, -1), Quaternion.identity);
             playerObject.transform.localScale = new Vector3(controllerLocations[controller.location].width, controllerLocations[controller.location].height, 1);
 
             playerObject.index = controller.location;
             playerObject.location = controller.location;
             playerObject.name = controller.name;
-            playerObject.textlocation = controller.textLocation;
             playerObject.playerSelectionConfig = playerSelectionConfig;
             playerObject.playerSelectionResult = playerSelectionResult;
 
@@ -52,7 +51,7 @@ public class PlayerSelectHandler : MonoBehaviour
 
         foreach (var skill in playerSelectionConfig.configData.skills)
         {
-            var skillObject = Instantiate(skillSelectObject, new Vector3(skillLocations[skill.location].x + 0.5f * skillLocations[skill.location].width, skillLocations[skill.location].y + 0.5f * skillLocations[skill.location].height, -1), Quaternion.identity);
+            var skillObject = Instantiate(skillSelectObject, new Vector3(skillLocations[skill.location].x, skillLocations[skill.location].y, -1), Quaternion.identity);
             skillObject.transform.localScale = new Vector3(skillLocations[skill.location].width, skillLocations[skill.location].height, 1);
 
             skillObject.location = skill.location;

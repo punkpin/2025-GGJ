@@ -18,9 +18,10 @@ public class Keymap
 public class PlayerController
 {
     public string name;
+    public string color;
+    public int team;
     public Keymap keymap;
     public int location;
-    public int textLocation;
 }
 
 [Serializable]

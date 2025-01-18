@@ -25,6 +25,8 @@ public class PlayerObject : BaseBubble
     private bool isConquerEnable = true;
     private bool clawing = false;
 
+    private GameGenerator gameGenerator;
+
     private float defaultSpeed;
     private float defaultColliderSize;
 
@@ -36,65 +38,69 @@ public class PlayerObject : BaseBubble
         defaultSpeed = moveSpeed;
         defaultColliderSize = colliderSize;
         defaultScale = gameObject.transform.localScale;
+        gameGenerator = FindObjectOfType<GameGenerator>();
     }
 
     void Update()
     {
-        Vector2 moveDirection = Vector2.zero;
+        if (!gameGenerator.globalFreeze)
+        {
+            Vector2 moveDirection = Vector2.zero;
 
-        if (Input.GetKey(moveUpKey))
-        {
-            moveDirection.y += 1;
-        }
-        if (Input.GetKey(moveDownKey))
-        {
-            moveDirection.y -= 1;
-        }
-        if (Input.GetKey(moveLeftKey))
-        {
-            moveDirection.x -= 1;
-        }
-        if (Input.GetKey(moveRightKey))
-        {
-            moveDirection.x += 1;
-        }
+            if (Input.GetKey(moveUpKey))
+            {
+                moveDirection.y += 1;
+            }
+            if (Input.GetKey(moveDownKey))
+            {
+                moveDirection.y -= 1;
+            }
+            if (Input.GetKey(moveLeftKey))
+            {
+                moveDirection.x -= 1;
+            }
+            if (Input.GetKey(moveRightKey))
+            {
+                moveDirection.x += 1;
+            }
 
-        if (isConquerEnable)
-        {
-            Conquer();
-        }
+            if (isConquerEnable)
+            {
+                Conquer();
+            }
 
-        if (freezeTimeRemaining > 0)
-        {
-            freezeTimeRemaining -= Time.deltaTime;
-        }
-        else
-        {
-            Move(moveDirection);
-        }
+            if (freezeTimeRemaining > 0)
+            {
+                freezeTimeRemaining -= Time.deltaTime;
+            }
+            else
+            {
+                Move(moveDirection);
+            }
 
-        if (skillCoolDown > 0)
-        {
-            skillCoolDown -= Time.deltaTime;
-        }
+            if (skillCoolDown > 0)
+            {
+                skillCoolDown -= Time.deltaTime;
+            }
 
-        if (Input.GetKeyDown(useSkillKey))
-        {
-            UseSkill();
-        }
+            if (Input.GetKeyDown(useSkillKey))
+            {
+                UseSkill();
+            }
 
-        if (Input.GetKeyDown(useItemKey))
-        {
-            UseItem();
-        }
+            if (skillTimeRemaining > 0)
+            {
+                skillTimeRemaining -= Time.deltaTime;
+            }
+            else
+            {
+                ResetSkill();
+            }
 
-        if (skillTimeRemaining > 0)
-        {
-            skillTimeRemaining -= Time.deltaTime;
-        }
-        else
-        {
-            ResetSkill();
+            if (Input.GetKeyDown(useItemKey))
+            {
+                UseItem();
+            }
         }
     }
 

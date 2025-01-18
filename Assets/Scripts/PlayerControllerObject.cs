@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro; 
 
 public class PlayerControllerObject : MonoBehaviour
 {
     public int index;
     public int location;
     public bool isReady;
-    public int textlocation;
-
     public KeyCode moveLeftKey;
     public KeyCode moveRightKey;
     public KeyCode useSkillKey;
+    private TextMeshPro playerText;
 
     public PlayerSelectionResult playerSelectionResult;
     public PlayerSelectionConfig playerSelectionConfig;
     private List<Location> controllerlocations;
     private List<Skill> skills;
-    private List<PlayerController> playerControllers;
+    private PlayerController playerController;
+    private Color textColor;
     private bool isMovingLeft = false;
     private bool isMovingRight = false;
 
@@ -27,12 +28,25 @@ public class PlayerControllerObject : MonoBehaviour
         PlayerSelectionConfigData playerSelectionConfigData = playerSelectionConfig.configData; 
         controllerlocations = playerSelectionConfigData.controllerLocations;
         skills = playerSelectionConfigData.skills;
-        playerControllers = playerSelectionConfigData.controllers;
+        playerController = playerSelectionConfigData.controllers[index];
+        textColor = ColorUtility.TryParseHtmlString(playerController.color, out Color color) ? color : Color.white;
+        playerText = GetComponentInChildren<TextMeshPro>();
+        if (playerText != null)
+        {
+            playerText.text = new string(Enumerable.Repeat("\n", index).SelectMany(s => s).ToArray()) + $"Player {playerController.name}";
+            playerText.color = textColor;
+        }
     }
 
     void Update()
     {
+        if (isReady)
+        {
+            return;
+        }
+
         bool changeLocation = false;
+
         if (Input.GetKey(moveLeftKey) && location > 0 && !isReady && !isMovingLeft)
         {
             isMovingLeft = true;
@@ -71,10 +85,9 @@ public class PlayerControllerObject : MonoBehaviour
     private bool SetReady()
     {
         string skill = skills.FirstOrDefault(s => s.location == location)?.skill;
-        PlayerController controller = playerControllers[index];
-        if (playerSelectionResult.Set(skill, controller))
+        if (playerSelectionResult.Set(skill, playerController))
         {
-            Debug.Log("Set Skill Complete");
+            playerText.text = $"Player {playerController.name}\nSkill {skill}\n\nREADY";
             return true;
         }
         return false;
@@ -82,7 +95,7 @@ public class PlayerControllerObject : MonoBehaviour
 
     private void UpdateLocation()
     {
-        transform.position = new Vector3(controllerlocations[location].x + 0.5f * controllerlocations[location].width, controllerlocations[location].y + 0.5f * controllerlocations[location].height, -1);
+        transform.position = new Vector3(controllerlocations[location].x, controllerlocations[location].y, -1);
         transform.localScale = new Vector3(controllerlocations[location].width, controllerlocations[location].height, 1);
     }
 }
