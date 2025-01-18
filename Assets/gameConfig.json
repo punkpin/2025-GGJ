@@ -95,7 +95,7 @@
             "name": "a2",
             "team": 1,
             "color": "#999900",
-            "skill": "c",
+            "skill": "claw",
             "location": {
                 "x": 10,
                 "y": 60,
@@ -115,7 +115,7 @@
             "name": "b2",
             "team": 2,
             "color": "#000099",
-            "skill": "d",
+            "skill": "fast",
             "location": {
                 "x": 100,
                 "y": 60,
