@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 50670187}
   - component: {fileID: 50670186}
   m_Layer: 0
-  m_Name: MockPlayerSelection
+  m_Name: PlayerSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
