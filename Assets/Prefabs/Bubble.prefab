@@ -10,10 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8933029184499695616}
   - component: {fileID: 5520703183609192188}
-  - component: {fileID: 1266810936306238378}
+  - component: {fileID: 6890807850056367730}
+  - component: {fileID: 6326523916213012504}
+  - component: {fileID: -149050367878757316}
   m_Layer: 0
-  m_Name: PlayerCircle
-  m_TagString: Player
+  m_Name: Bubble
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.237664, y: 0.21393442, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 4}
+  m_LocalScale: {x: 4, y: 4, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1266810936306238378
+--- !u!114 &6890807850056367730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,26 +96,74 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303385982166632709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0beb6b48e382a448a326469b29dbc0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e01bcb3758a7544492053cb239f47c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleColor: {r: 1, g: 1, b: 1, a: 1}
-  moveSpeed: 50
+  circleColor: {r: 1, g: 0.1641509, b: 0.1641509, a: 1}
+  moveSpeed: 40
   color: {r: 0, g: 0, b: 0, a: 0}
+  colorTeam02: {r: 0.26666668, g: 1, b: 1, a: 1}
+  colorTeam01: {r: 0.26666668, g: 0.26666668, b: 1, a: 1}
   team: 0
-  skill: 
-  TestItem: 1
-  item: 0
-  isBoosted: 0
-  PlayeryDirection: {x: 0, y: 0}
-  ItemManager: {fileID: 0}
-  colliderSize: 4
-  skillCoolDown: 10
-  skillTimeRemaining: 0
-  freezeTimeRemaining: 0
-  moveUpKey: 119
-  moveDownKey: 115
-  moveLeftKey: 97
-  moveRightKey: 100
-  useSkillKey: 113
-  useItemKey: 101
+--- !u!50 &6326523916213012504
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303385982166632709}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &-149050367878757316
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303385982166632709}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

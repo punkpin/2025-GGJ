@@ -2,12 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerObject : BaseBubble
+
+public class PlayerObject : BaseBubble 
 {
     public Color color;
     public int team;
     public string skill;
-    public string item;
+    
+
+//item
+    public int TestItem;
+    public int item;
+
+    public bool isBoosted;
+   public Vector2 PlayeryDirection;
+
+
+       public ItemManager ItemManager;
+
+//item
+
     public float colliderSize = 4.0f;
     public float skillCoolDown = 10.0f;
 
@@ -25,7 +39,7 @@ public class PlayerObject : BaseBubble
     private bool isConquerEnable = true;
     private bool clawing = false;
 
-    private GameGenerator gameGenerator;
+  private GameGenerator gameGenerator;
 
     private float defaultSpeed;
     private float defaultColliderSize;
@@ -35,6 +49,19 @@ public class PlayerObject : BaseBubble
     new void Start()
     {
         base.Start();
+       
+//ITEM 
+       SetItem(TestItem);
+        ItemManager itemManager = ItemManager.Instance;  
+         GameObject targetObject = GameObject.Find("itemManager");
+        if (targetObject != null)
+        {
+            ItemManager = targetObject.GetComponent<ItemManager>();
+        }
+//
+
+
+
         defaultSpeed = moveSpeed;
         defaultColliderSize = colliderSize;
         defaultScale = gameObject.transform.localScale;
@@ -43,65 +70,68 @@ public class PlayerObject : BaseBubble
 
     void Update()
     {
-        if (!gameGenerator.globalFreeze)
+
+
+ if (!gameGenerator.globalFreeze)  
+{
+        Vector2 moveDirection = Vector2.zero;
+
+        if (Input.GetKey(moveUpKey))
         {
-            Vector2 moveDirection = Vector2.zero;
-
-            if (Input.GetKey(moveUpKey))
-            {
-                moveDirection.y += 1;
-            }
-            if (Input.GetKey(moveDownKey))
-            {
-                moveDirection.y -= 1;
-            }
-            if (Input.GetKey(moveLeftKey))
-            {
-                moveDirection.x -= 1;
-            }
-            if (Input.GetKey(moveRightKey))
-            {
-                moveDirection.x += 1;
-            }
-
-            if (isConquerEnable)
-            {
-                Conquer();
-            }
-
-            if (freezeTimeRemaining > 0)
-            {
-                freezeTimeRemaining -= Time.deltaTime;
-            }
-            else
-            {
-                Move(moveDirection);
-            }
-
-            if (skillCoolDown > 0)
-            {
-                skillCoolDown -= Time.deltaTime;
-            }
-
-            if (Input.GetKeyDown(useSkillKey))
-            {
-                UseSkill();
-            }
-
-            if (skillTimeRemaining > 0)
-            {
-                skillTimeRemaining -= Time.deltaTime;
-            }
-            else
-            {
-                ResetSkill();
-            }
-
-            if (Input.GetKeyDown(useItemKey))
-            {
-                UseItem();
-            }
+            moveDirection.y += 1;
         }
+        if (Input.GetKey(moveDownKey))
+        {
+            moveDirection.y -= 1;
+        }
+        if (Input.GetKey(moveLeftKey))
+        {
+            moveDirection.x -= 1;
+        }
+        if (Input.GetKey(moveRightKey))
+        {
+            moveDirection.x += 1;
+        }
+         PlayeryDirection=moveDirection;
+
+        if (isConquerEnable)
+        {
+            Conquer();
+        }
+
+        if (freezeTimeRemaining > 0)
+        {
+            freezeTimeRemaining -= Time.deltaTime;
+        }
+        else
+        {
+            Move(moveDirection);
+        }
+
+        if (skillCoolDown > 0)
+        {
+            skillCoolDown -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(useSkillKey))
+        {
+            UseSkill();
+        }
+
+        if (Input.GetKeyDown(useItemKey))
+        {
+            UseItem();
+        }
+
+        if (skillTimeRemaining > 0)
+        {
+            skillTimeRemaining -= Time.deltaTime;
+        }
+        else
+        {
+            ResetSkill();
+        }
+       }
     }
 
     private void UseSkill()
@@ -169,11 +199,81 @@ public class PlayerObject : BaseBubble
         }
     }
 
+
+
+    /// <summary>
+/// itme
+/// </summary>
+
+
+    public void SetItem(int itemNumber)
+    {
+        item = itemNumber;
+        Debug.Log("获得了物品"+itemNumber);
+    }
+
     private void UseItem()
     {
         // Implement item logic here
-        Debug.Log("Item used");
+           if (item != 0)
+        {
+            
+
+            if(item==1){
+               // 调用ITEM的Use方法
+               Vector3 playerPosition = transform.position;
+
+                ItemManager.useImem001(playerPosition, PlayeryDirection,moveSpeed,team,gameObject);
+            }
+            else if(item==2)
+            {
+                // 调用ITEM的Use方法
+
+                   // ItemManager.useImem002(PlayerSpeed,gameObject);
+
+                    BoostSpeed();
+            }
+            else if(item==3)
+            {
+                Vector3 playerPosition = transform.position;
+                // 调用ITEM的Use方法
+                ItemManager.useImem003(playerPosition,team);
+           
+            }
+
+             Debug.Log("Item ID USED:"+item);
+             item=0;
+        }
+        else
+        {
+            Debug.Log("没有物品可以使用");
+        }
+   
     }
+
+
+ void BoostSpeed()
+    {
+        
+        isBoosted = true;
+        moveSpeed = moveSpeed * 1.6f; // 将速度提升为基础速度的1.5倍
+        Debug.Log("Speed boosted to: " + moveSpeed);
+
+        // 启动定时器，5秒后恢复基础速度
+        Invoke("ResetSpeed", 5f);
+    }
+
+
+     void ResetSpeed()
+    {
+        moveSpeed = 40f; // 恢复到基础速度
+        Debug.Log("Speed reset to base: " + moveSpeed);
+        isBoosted = false;
+    }
+/// <summary>
+/// itme
+/// </summary>
+
 
     private void Conquer()
     {
@@ -194,6 +294,7 @@ public class PlayerObject : BaseBubble
         // Check the collided object
         GameObject collidedObject = collision.gameObject;
 
+
         // Example: Check if the collided object is a GroundObject
         PlayerObject collidedPlayerObject = collidedObject.GetComponent<PlayerObject>();
         if (collidedPlayerObject != null)
@@ -205,4 +306,6 @@ public class PlayerObject : BaseBubble
             }
         }
     }
+   
+
 }
