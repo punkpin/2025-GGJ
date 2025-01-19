@@ -62,16 +62,6 @@ public class PlayerSelectHandler : MonoBehaviour
 
     private KeyCode ParseKeyCode(string key)
     {
-        if (int.TryParse(key, out int number) && number >= 0 && number <= 9)
-        {
-            return KeyCode.Alpha0 + number;
-        }
-
-        if (System.Enum.TryParse(key.ToLower(), true, out KeyCode keyCode))
-        {
-            return keyCode;
-        }
-
         switch (key)
         {
             case "-":
@@ -96,8 +86,31 @@ public class PlayerSelectHandler : MonoBehaviour
                 return KeyCode.Backslash;
             case "`":
                 return KeyCode.BackQuote;
-            default:              
-                throw new System.ArgumentException($"Unsupported key: {key}");
+            case "up":
+                return KeyCode.UpArrow;
+            case "down":
+                return KeyCode.DownArrow;
+            case "left":
+                return KeyCode.LeftArrow;
+            case "right":
+                return KeyCode.RightArrow;
+            case "right ctrl":
+                return KeyCode.RightControl;
+            case "right alt":
+                return KeyCode.RightAlt;
+            default:   
+                break;
         }
+        
+        if (int.TryParse(key, out int number) && number >= 0 && number <= 9)
+        {
+            return KeyCode.Alpha0 + number;
+        }
+
+        if (System.Enum.TryParse(key.ToLower(), true, out KeyCode keyCode))
+        {
+            return keyCode;
+        }
+        return KeyCode.None;
     }
 }

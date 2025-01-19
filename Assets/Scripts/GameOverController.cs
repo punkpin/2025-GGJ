@@ -63,7 +63,7 @@ public class GameOverController : MonoBehaviour
         }
         else 
         {
-            hint.text = "Press any key to continue";
+            hint.text = "按任意键返回主界面";
             if (Input.anyKeyDown)
             {
                 Destroy(gameResult.gameObject);

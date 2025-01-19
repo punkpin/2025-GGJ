@@ -30,10 +30,11 @@ public class PlayerControllerObject : MonoBehaviour
         skills = playerSelectionConfigData.skills;
         playerController = playerSelectionConfigData.controllers[index];
         textColor = ColorUtility.TryParseHtmlString(playerController.color, out Color color) ? color : Color.white;
+        Keymap keymap = playerController.keymap;
         playerText = GetComponentInChildren<TextMeshPro>();
         if (playerText != null)
         {
-            playerText.text = new string(Enumerable.Repeat("\n", index).SelectMany(s => s).ToArray()) + $"Player {playerController.name}";
+            playerText.text = $"Player {playerController.name}\n上: {keymap.up.ToUpper()} 下: {keymap.down.ToUpper()}\n左: {keymap.left.ToUpper()} 右: {keymap.right.ToUpper()}\n技能: {keymap.skill.ToUpper()}\n道具: {keymap.item.ToUpper()}";
             playerText.color = textColor;
         }
     }
@@ -45,36 +46,36 @@ public class PlayerControllerObject : MonoBehaviour
             return;
         }
 
-        bool changeLocation = false;
+        // bool changeLocation = false;
 
-        if (Input.GetKey(moveLeftKey) && location > 0 && !isReady && !isMovingLeft)
-        {
-            isMovingLeft = true;
-            changeLocation = true;
-            location--;
-        }
-        if (Input.GetKey(moveRightKey) && location < controllerlocations.Count()- 1 && !isReady && !isMovingRight)
-        {
-            isMovingRight = true;
-            changeLocation = true;
-            location++;
-        }
+        // if (Input.GetKey(moveLeftKey) && location > 0 && !isReady && !isMovingLeft)
+        // {
+        //     isMovingLeft = true;
+        //     changeLocation = true;
+        //     location--;
+        // }
+        // if (Input.GetKey(moveRightKey) && location < controllerlocations.Count()- 1 && !isReady && !isMovingRight)
+        // {
+        //     isMovingRight = true;
+        //     changeLocation = true;
+        //     location++;
+        // }
 
-        if (Input.GetKeyUp(moveLeftKey))
-        {
-            isMovingLeft = false;
-        }
+        // if (Input.GetKeyUp(moveLeftKey))
+        // {
+        //     isMovingLeft = false;
+        // }
 
-        if (Input.GetKeyUp(moveRightKey))
-        {
-            isMovingRight = false;
-        }
+        // if (Input.GetKeyUp(moveRightKey))
+        // {
+        //     isMovingRight = false;
+        // }
 
-        if (changeLocation)
-        {
-            UpdateLocation();
-            changeLocation = false;
-        }
+        // if (changeLocation)
+        // {
+        //     UpdateLocation();
+        //     changeLocation = false;
+        // }
 
         if (Input.GetKeyDown(useSkillKey))
         {
@@ -87,7 +88,8 @@ public class PlayerControllerObject : MonoBehaviour
         string skill = skills.FirstOrDefault(s => s.location == location)?.skill;
         if (playerSelectionResult.Set(skill, playerController))
         {
-            playerText.text = $"Player {playerController.name}\nSkill {skill}\n\nREADY";
+            playerText.text = $"\nPlayer {playerController.name}\n\nREADY";
+            playerText.fontSize *= 1.2f;
             return true;
         }
         return false;

@@ -189,23 +189,13 @@ public class GameGenerator : MonoBehaviour
             var halfGroundHeight = ground.height * 0.5f;
 
             mainCamera.transform.position = new Vector3(halfGroundWidth - 0.25f, halfGroundHeight - 0.25f, mainCamera.transform.position.z);
-            mainCamera.orthographicSize = halfGroundHeight + 6;
+            mainCamera.orthographicSize = halfGroundHeight + 12;
         }
     }
 
     private KeyCode ParseKeyCode(string key)
     {
-        if (int.TryParse(key, out int number) && number >= 0 && number <= 9)
-        {
-            return KeyCode.Alpha0 + number;
-        }
-
-        if (System.Enum.TryParse(key.ToLower(), true, out KeyCode keyCode))
-        {
-            return keyCode;
-        }
-
-        switch (key)
+         switch (key)
         {
             case "-":
                 return KeyCode.Minus;
@@ -229,9 +219,32 @@ public class GameGenerator : MonoBehaviour
                 return KeyCode.Backslash;
             case "`":
                 return KeyCode.BackQuote;
-            default:              
-                throw new System.ArgumentException($"Unsupported key: {key}");
+            case "up":
+                return KeyCode.UpArrow;
+            case "down":
+                return KeyCode.DownArrow;
+            case "left":
+                return KeyCode.LeftArrow;
+            case "right":
+                return KeyCode.RightArrow;
+            case "right ctrl":
+                return KeyCode.RightControl;
+            case "right alt":
+                return KeyCode.RightAlt;
+            default:   
+                break;
         }
+        
+        if (int.TryParse(key, out int number) && number >= 0 && number <= 9)
+        {
+            return KeyCode.Alpha0 + number;
+        }
+
+        if (System.Enum.TryParse(key.ToLower(), true, out KeyCode keyCode))
+        {
+            return keyCode;
+        }
+        return KeyCode.None;
     }
 
     void UpdateUI()
@@ -254,7 +267,7 @@ public class GameGenerator : MonoBehaviour
         }
         float team1Percentage = (float)team1Score / (team1Score + team2Score) * 100;
         float team2Percentage = (float)team2Score / (team1Score + team2Score) * 100;
-        return $"{team1Percentage:F1} VS {team2Percentage:F1}";
+        return $"{team1Percentage:F0} vs {team2Percentage:F0}";
     }
 }
 
