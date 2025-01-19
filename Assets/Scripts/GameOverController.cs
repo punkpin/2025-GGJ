@@ -67,7 +67,7 @@ public class GameOverController : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 Destroy(gameResult.gameObject);
-                SceneManager.LoadScene("PlayerSelection");
+                SceneManager.LoadScene("StartGame");
             }
         }
     }
