@@ -6,12 +6,15 @@ using TMPro;
 
 public class PlayerControllerObject : MonoBehaviour
 {
+    public string name;
     public int index;
     public int location;
     public bool isReady;
     public KeyCode moveLeftKey;
     public KeyCode moveRightKey;
     public KeyCode useSkillKey;
+
+    private AnimationController animationController;
     private TextMeshPro playerText;
 
     public PlayerSelectionResult playerSelectionResult;
@@ -25,6 +28,7 @@ public class PlayerControllerObject : MonoBehaviour
 
     void Start()
     {
+        animationController = GetComponent<AnimationController>();
         PlayerSelectionConfigData playerSelectionConfigData = playerSelectionConfig.configData; 
         controllerlocations = playerSelectionConfigData.controllerLocations;
         skills = playerSelectionConfigData.skills;
@@ -90,6 +94,7 @@ public class PlayerControllerObject : MonoBehaviour
         {
             playerText.text = $"\nPlayer {playerController.name}\n\nREADY";
             playerText.fontSize *= 1.2f;
+            animationController.UseSkill();
             return true;
         }
         return false;

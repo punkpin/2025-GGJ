@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSelectHandler : MonoBehaviour
 {
-    public PlayerControllerObject playerControllerObject;
+    public List<PlayerControllerObject> playerControllerObjects;
     public SkillSelectObject skillSelectObject;
     private PlayerSelectionConfig playerSelectionConfig;
     private PlayerSelectionResult playerSelectionResult;
@@ -31,6 +31,7 @@ public class PlayerSelectHandler : MonoBehaviour
         List<Location> controllerLocations = playerSelectionConfig.configData.controllerLocations;
         foreach (var controller in playerSelectionConfig.configData.controllers)
         {
+            PlayerControllerObject playerControllerObject = playerControllerObjects.Find(p => p.name == controller.prefab);
             var playerObject = Instantiate(playerControllerObject, new Vector3(controllerLocations[controller.location].x, controllerLocations[controller.location].y, -1), Quaternion.identity);
             playerObject.transform.localScale = new Vector3(controllerLocations[controller.location].width, controllerLocations[controller.location].height, 1);
 

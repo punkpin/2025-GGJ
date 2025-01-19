@@ -16,8 +16,8 @@ public class Location
 {
     public int x;
     public int y;
-    public int width;
-    public int height;
+    public float width;
+    public float height;
 }
 
 [Serializable]

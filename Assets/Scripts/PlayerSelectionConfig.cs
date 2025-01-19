@@ -18,6 +18,7 @@ public class Keymap
 public class PlayerController
 {
     public string name;
+    public string prefab;
     public string color;
     public int team;
     public Keymap keymap;
