@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class AnimationController : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class AnimationController : MonoBehaviour
     public float moveY = 0.0f;
     public float delay = 1.0f;
 
-    private string lastDirection; // 最后一次移动的方向
-    private Animator animator;  // Animator组件
+    private string lastDirection;
+    private Animator animator;
     private AudioSource audioSource;
     public AudioClip skillSound;
 
@@ -100,6 +101,12 @@ public class AnimationController : MonoBehaviour
     }
 
     public void UseSkill()
+    {
+        animator.SetTrigger("UseSkill");
+        PlaySound(skillSound);
+    }
+
+    public void UseItem()
     {
         animator.SetTrigger("UseSkill");
         PlaySound(skillSound);
