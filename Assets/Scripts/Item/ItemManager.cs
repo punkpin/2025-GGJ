@@ -79,31 +79,31 @@ public AudioClip[] BGMClips;  // 管理背景音乐
             // 打印选中的数字
             Debug.Log("随机生成点" + randomNum);
 
-            // 随机选择物体数组中的一个物体
-            //GameObject randomObject = objects[Random.Range(0, objects.Length)];
+             //随机选择物体数组中的一个物体
+            GameObject randomObject = objects[Random.Range(0, objects.Length)];
             //GameObject CreateItem = prefabs[Random.Range(0, prefabs.Length)];
 
 
-            //Debug.Log("随机出的道具是" + randomNumItemID);
+            Debug.Log("随机出的道具是" + randomNumItemID);
             //Debug.Log("Random number chosen: " + CreateItem);
 
             // 在选中的物体位置生成预制体
 
-            //Vector3 TransformA=randomObject.transform.position;
-            //SetItem(TransformA,randomNumItemID,RandomTime);
-            //Debug.Log("创建了一个道具 " + randomNumItemID);
+            Vector3 TransformA=randomObject.transform.position;
+            SetItem(TransformA,randomNumItemID,RandomTime);
+            Debug.Log("创建了一个道具 " + randomNumItemID);
 
         }
     }
 
-public void useImem001(Vector3 position, Vector2 direction,float PlayerSpeed,int team,object gameObject)
+public void useImem001(Vector3 position, Vector2 direction,float PlayerSpeed,int team,object gameObject,Color color)
     {
          // 传递过来的位置信息和朝向
         Debug.Log("Position: " + position);
         Debug.Log("Direction: " + direction);
         Debug.Log("PlayerSpeed: " + PlayerSpeed);
          Debug.Log("teamID: " + team);
-
+  Debug.Log("color: " + color);
          // 计算泡泡的速度，泡泡速度为玩家速度的1.2倍
     float bubbleSpeed = PlayerSpeed * 1.2f;
 
@@ -124,7 +124,7 @@ public void useImem001(Vector3 position, Vector2 direction,float PlayerSpeed,int
     if (itemBubbleScript != null)
     {
         // 调用 SetTeam 方法并传入 team 值
-        itemBubbleScript.SetTeam(team,gameObject);
+        itemBubbleScript.SetTeam(team,gameObject,color);
     }
     else
     {
