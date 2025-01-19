@@ -53,11 +53,9 @@ public AudioClip[] BGMClips;  // 管理背景音乐
 
     void Start()
     {
-
-
- bgmAudioSource = gameObject.AddComponent<AudioSource>();
+        bgmAudioSource = gameObject.AddComponent<AudioSource>();
         bgmAudioSource.clip = BGMClips[0];  
-            bgmAudioSource.Play();
+        bgmAudioSource.Play();
 
         // 初始化定时器
         timerObj = 8f;
@@ -82,26 +80,21 @@ public AudioClip[] BGMClips;  // 管理背景音乐
             Debug.Log("随机生成点" + randomNum);
 
             // 随机选择物体数组中的一个物体
-            GameObject randomObject = objects[Random.Range(0, objects.Length)];
-           // GameObject CreateItem = prefabs[Random.Range(0, prefabs.Length)];
+            //GameObject randomObject = objects[Random.Range(0, objects.Length)];
+            //GameObject CreateItem = prefabs[Random.Range(0, prefabs.Length)];
 
 
-            Debug.Log("随机出的道具是" + randomNumItemID);
+            //Debug.Log("随机出的道具是" + randomNumItemID);
             //Debug.Log("Random number chosen: " + CreateItem);
 
             // 在选中的物体位置生成预制体
 
-            Vector3 TransformA=randomObject.transform.position;
-             SetItem(TransformA,randomNumItemID,RandomTime);
-            Debug.Log("创建了一个道具 " + randomNumItemID);
+            //Vector3 TransformA=randomObject.transform.position;
+            //SetItem(TransformA,randomNumItemID,RandomTime);
+            //Debug.Log("创建了一个道具 " + randomNumItemID);
 
         }
     }
-
-
-
-
-
 
 public void useImem001(Vector3 position, Vector2 direction,float PlayerSpeed,int team,object gameObject)
     {

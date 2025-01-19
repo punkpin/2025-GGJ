@@ -1540,7 +1540,6 @@ MonoBehaviour:
   - {fileID: 214399947328146981, guid: 9a3418440e32a45468c91f2f002a4026, type: 3}
   - {fileID: 2538405042731437002, guid: c3ffaf94738e2cf46b21b1a27f47c9df, type: 3}
   - {fileID: 6730140383166405097, guid: 9ae5b3821524eb44faf505641187143d, type: 3}
-  itemPrefab: {fileID: 398149434631041918, guid: bec628d8059c9f14ab86ccd03cbff0dc, type: 3}
   gameConfig: {fileID: 640238360}
   gameResult: {fileID: -5380668176651662940, guid: df3d32260d9504545a928e62109f3f7e, type: 3}
   showtimeText: {fileID: 1129628667}
@@ -2465,6 +2464,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2743231221051265199, guid: 87f0076ba8a49e34f91d50f49f05d628, type: 3}
+      propertyPath: BGMClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743231221051265199, guid: 87f0076ba8a49e34f91d50f49f05d628, type: 3}
       propertyPath: objects.Array.data[0]
       value: 
       objectReference: {fileID: 430411255}
@@ -2488,6 +2491,10 @@ PrefabInstance:
       propertyPath: prefabs.Array.data[2]
       value: 
       objectReference: {fileID: 5303385982166632709, guid: 37bc5518baad1cb43ab91ec5c0805951, type: 3}
+    - target: {fileID: 2743231221051265199, guid: 87f0076ba8a49e34f91d50f49f05d628, type: 3}
+      propertyPath: BGMClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 549c80668469bf84181064b39f249a6a, type: 3}
     - target: {fileID: 4865112169797198555, guid: 87f0076ba8a49e34f91d50f49f05d628, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.4065337
