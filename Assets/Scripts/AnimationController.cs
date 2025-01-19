@@ -13,6 +13,8 @@ public class AnimationController : MonoBehaviour
 
     private string lastDirection; // 最后一次移动的方向
     private Animator animator;  // Animator组件
+    private AudioSource audioSource;
+    public AudioClip skillSound;
 
     void Start()
     {
@@ -24,6 +26,8 @@ public class AnimationController : MonoBehaviour
         animator.SetBool("isMoving", false);
         
         animator.SetBool("isDizzy", false);
+
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -98,6 +102,7 @@ public class AnimationController : MonoBehaviour
     public void UseSkill()
     {
         animator.SetTrigger("UseSkill");
+        PlaySound(skillSound);
     }
     
     public void TriggerDizzy()
@@ -112,5 +117,13 @@ public class AnimationController : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         animator.SetBool("isDizzy", false);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }

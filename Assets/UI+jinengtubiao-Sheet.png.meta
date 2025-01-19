@@ -1,0 +1,1007 @@
+fileFormatVersion: 2
+guid: 9eb963b37bf600c4683fc9f8222c346e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 306
+        width: 114
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c329888c3b08a0d4280d2bc2761b35cd
+      internalID: -1274169318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 306
+        width: 114
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b12dd072c23c2ae42a73d29b0017fe82
+      internalID: 604756337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 306
+        width: 114
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad3646a559e15ed4aa0c02816d3e465c
+      internalID: -1392192917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 306
+        width: 112
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2184ddebcd8d78c46bc9c078388dd81d
+      internalID: 160905963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 283
+        width: 113
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec14c97aec8d5b40a1af7673ee8b6aa
+      internalID: 1439260371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 283
+        width: 113
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 819c32f95c0bbdd428603fdb21a6363a
+      internalID: -947706483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 184
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d46335ab80f39c48ada40acb8caabe5
+      internalID: 2055276032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 184
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e377d54f6a2cba749a40c18b03e63941
+      internalID: 110820517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 184
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abe4cf7e288ed3a4bb9895ba159e31a8
+      internalID: 1336731614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 184
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad50e392eeb05ca48bd8883dd868d9c3
+      internalID: 324160617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 184
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f26dcea7fe7154fb562d218992f46c
+      internalID: 1675227747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 184
+        width: 13
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09629603f0809254ca0f7b4a6eeb0edf
+      internalID: 1474535829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 184
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dad113ef26f1e804da2747012676d376
+      internalID: -1308567944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 184
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2802413f11a12c4790c235fa54411b0
+      internalID: 1367052357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 183
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ecc70f49c317a54dad6a499b0b11bff
+      internalID: 128937977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 183
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9ba2ddb0a88e3c42b534ea58fc0754a
+      internalID: 1693651680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 183
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d5b6bed127f0e94485b25b7befe67c7
+      internalID: 2056919163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 180
+        width: 46
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e6e56f3a2d40734c8af3a00abd2c46d
+      internalID: 888031399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 187
+        width: 7
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f0d62d1213bbc4dad76e4df79fd1ce
+      internalID: -1690836999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 177
+        width: 15
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bfe32410b14cf64580f3442fb23583d
+      internalID: -618900391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 193
+        width: 10
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ba4f383e8e8f640bcf813a6f3bdcfa
+      internalID: -1413691269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 183
+        width: 12
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28041770ed14f904c8c5423b237d0ee3
+      internalID: 1331838634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 168
+        width: 17
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63f9a8491855fa44eaf6b1ddf921e0d3
+      internalID: 1556563302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 183
+        width: 13
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520509dcfd53f414dbd4515850cf8912
+      internalID: 673325274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 193
+        width: 11
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f04b12a026cd91c48ae855b5b25d310b
+      internalID: -1030882454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 158
+        width: 118
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db435c39598fc9542b5fa8373ddf9f46
+      internalID: -1750685435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 158
+        width: 116
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6240a9647c9ad7f439adef6cc7881b34
+      internalID: -237076174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 158
+        width: 115
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953aea304856f2e4a94524b4f896a4b5
+      internalID: 1742777252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 158
+        width: 116
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d00a053744b6ca84984ef7e021031731
+      internalID: 1823264402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 158
+        width: 117
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3efdaa80cfea51645bd6845737e43833
+      internalID: 30114673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 158
+        width: 114
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c872df82a44eb1949b5666a9498990d9
+      internalID: -1706053969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 1541
+        y: 158
+        width: 111
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40ba8c42bdaf894d8217ca242f82552
+      internalID: 35153659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 158
+        width: 112
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69286883691810d43b3150840e847bbe
+      internalID: -278774913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 1797
+        y: 158
+        width: 118
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f37751cbb415084428ab556a2e5ead15
+      internalID: -625571152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: large
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 132
+        width: 123
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7de0310e120b63419c0668a3246f5e1
+      internalID: -415842513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fast
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 132
+        width: 123
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7dec16d8c5d25b4e99f078955ead387
+      internalID: 1628625970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fly
+      rect:
+        serializedVersion: 2
+        x: 2179
+        y: 132
+        width: 122
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a00a898748fbd6044af330e51a4c0282
+      internalID: 702438467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: claw
+      rect:
+        serializedVersion: 2
+        x: 2307
+        y: 132
+        width: 123
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0b6b22f4b05feb4e83966e3f6c476fb
+      internalID: 461519777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 23
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 437d436428a032d4b96c815c53ff6a63
+      internalID: 1185221956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI+jinengtubiao-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 23
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8e2a0843570a2448b447314fabc96ea
+      internalID: -1878444245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      UI+jinengtubiao-Sheet_0: -1274169318
+      UI+jinengtubiao-Sheet_1: 604756337
+      UI+jinengtubiao-Sheet_10: 1675227747
+      UI+jinengtubiao-Sheet_11: 1474535829
+      UI+jinengtubiao-Sheet_12: -1308567944
+      UI+jinengtubiao-Sheet_13: 1367052357
+      UI+jinengtubiao-Sheet_14: 128937977
+      UI+jinengtubiao-Sheet_15: 1693651680
+      UI+jinengtubiao-Sheet_16: 2056919163
+      UI+jinengtubiao-Sheet_17: 888031399
+      UI+jinengtubiao-Sheet_18: -1690836999
+      UI+jinengtubiao-Sheet_19: -618900391
+      UI+jinengtubiao-Sheet_2: -1392192917
+      UI+jinengtubiao-Sheet_20: -1413691269
+      UI+jinengtubiao-Sheet_21: 1331838634
+      UI+jinengtubiao-Sheet_22: 1556563302
+      UI+jinengtubiao-Sheet_23: 673325274
+      UI+jinengtubiao-Sheet_24: -1030882454
+      UI+jinengtubiao-Sheet_25: -1750685435
+      UI+jinengtubiao-Sheet_26: -237076174
+      UI+jinengtubiao-Sheet_27: 1742777252
+      UI+jinengtubiao-Sheet_28: 1823264402
+      UI+jinengtubiao-Sheet_29: 30114673
+      UI+jinengtubiao-Sheet_3: 160905963
+      UI+jinengtubiao-Sheet_30: -1706053969
+      UI+jinengtubiao-Sheet_31: 35153659
+      UI+jinengtubiao-Sheet_32: -278774913
+      UI+jinengtubiao-Sheet_33: -625571152
+      UI+jinengtubiao-Sheet_38: 1185221956
+      UI+jinengtubiao-Sheet_39: -1878444245
+      UI+jinengtubiao-Sheet_4: 1439260371
+      UI+jinengtubiao-Sheet_5: -947706483
+      UI+jinengtubiao-Sheet_6: 2055276032
+      UI+jinengtubiao-Sheet_7: 110820517
+      UI+jinengtubiao-Sheet_8: 1336731614
+      UI+jinengtubiao-Sheet_9: 324160617
+      claw: 461519777
+      fast: 1628625970
+      fly: 702438467
+      large: -415842513
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
