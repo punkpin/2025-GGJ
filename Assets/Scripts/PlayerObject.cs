@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class PlayerObject : BaseBubble 
 {
     public Color color;
     public int team;
     public string skill;
-    
+
+    public float speedMultiplier=1f;
+   public int characterIndex;
+
 
 //item
     public int TestItem;
@@ -36,29 +39,42 @@ public class PlayerObject : BaseBubble
     public KeyCode useSkillKey = KeyCode.Q;
     public KeyCode useItemKey = KeyCode.E;
 
+
     private bool isConquerEnable = true;
     private bool clawing = false;
 
-  private GameGenerator gameGenerator;
+  private GameGenerator    gameGenerator ;
 
     private float defaultSpeed;
     private float defaultColliderSize;
 
     private Vector3 defaultScale;
 
-    new void Start()
+     void Start()
     {
+
         base.Start();
        
 //ITEM 
        SetItem(TestItem);
         ItemManager itemManager = ItemManager.Instance;  
+  
          GameObject targetObject = GameObject.Find("itemManager");
         if (targetObject != null)
         {
             ItemManager = targetObject.GetComponent<ItemManager>();
+             
         }
 //
+
+        string objectName = gameObject.name;
+  
+         if (objectName == "A1") characterIndex = 0;
+        else if (objectName == "A2") characterIndex = 1;
+        else if (objectName == "B1") characterIndex = 2;
+        else if (objectName == "B2") characterIndex = 3;
+
+
 
 
 
@@ -78,19 +94,19 @@ public class PlayerObject : BaseBubble
 
         if (Input.GetKey(moveUpKey))
         {
-            moveDirection.y += 1;
+            moveDirection.y += 1*speedMultiplier;
         }
         if (Input.GetKey(moveDownKey))
         {
-            moveDirection.y -= 1;
+            moveDirection.y -= 1*speedMultiplier;
         }
         if (Input.GetKey(moveLeftKey))
         {
-            moveDirection.x -= 1;
+            moveDirection.x -= 1*speedMultiplier;
         }
         if (Input.GetKey(moveRightKey))
         {
-            moveDirection.x += 1;
+            moveDirection.x += 1*speedMultiplier;
         }
          PlayeryDirection=moveDirection;
 
@@ -141,6 +157,10 @@ public class PlayerObject : BaseBubble
             Debug.Log("Skill is unavailable");
             return;
         }
+
+       
+         Debug.Log("Skill技能CD开始刘流转 ");
+          UpdateSkillUI();
         switch (skill)
         {
             case "fast":
@@ -206,14 +226,49 @@ public class PlayerObject : BaseBubble
 /// </summary>
 
 
+
+public void UpdateSkillUI()
+{
+
+ GameObject UImanager = GameObject.Find("CharacterUIManager");
+
+        if (UImanager != null)
+        {
+            // 获取该物体上的 PlayerController 脚本组件
+            CharacterUIManager characterUIManager001 = UImanager.GetComponent<CharacterUIManager>();
+
+            // 调用 PlayerController 中的方法
+           characterUIManager001.UpdateScrool(characterIndex);
+        }
+}
+
+    
+
+public void UpdateitemUI(){
+    
+    GameObject UImanager = GameObject.Find("CharacterUIManager");
+
+        if (UImanager != null)
+        {
+            // 获取该物体上的 PlayerController 脚本组件
+            CharacterUIManager characterUIManager001 = UImanager.GetComponent<CharacterUIManager>();
+
+            // 调用 PlayerController 中的方法
+          characterUIManager001.UpdateUI(characterIndex, item);
+        }
+
+
+}
     public void SetItem(int itemNumber)
     {
         item = itemNumber;
+       UpdateitemUI();
         Debug.Log("获得了物品"+itemNumber);
     }
 
-    private void UseItem()
+    public void UseItem()
     {
+        UpdateitemUI();
         // Implement item logic here
            if (item != 0)
         {
@@ -252,11 +307,15 @@ public class PlayerObject : BaseBubble
     }
 
 
+    
+
  void BoostSpeed()
     {
         
         isBoosted = true;
-        moveSpeed = moveSpeed * 1.6f; // 将速度提升为基础速度的1.5倍
+
+        speedMultiplier=1.5f;
+       moveSpeed = 1.5f * defaultSpeed; // 将速度提升为基础速度的1.5倍
         Debug.Log("Speed boosted to: " + moveSpeed);
 
         // 启动定时器，5秒后恢复基础速度
@@ -266,7 +325,10 @@ public class PlayerObject : BaseBubble
 
      void ResetSpeed()
     {
-        moveSpeed = 40f; // 恢复到基础速度
+        moveSpeed = 50f; // 恢复到基础速度
+      
+      
+        speedMultiplier=1f;
         Debug.Log("Speed reset to base: " + moveSpeed);
         isBoosted = false;
     }

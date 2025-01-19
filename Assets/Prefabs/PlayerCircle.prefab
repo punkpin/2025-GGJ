@@ -102,7 +102,9 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   team: 0
   skill: 
-  TestItem: 1
+  speedMultiplier: 1
+  characterIndex: 0
+  TestItem: 0
   item: 0
   isBoosted: 0
   PlayeryDirection: {x: 0, y: 0}

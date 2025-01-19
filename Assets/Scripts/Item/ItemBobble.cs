@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemBobble : BaseBubble
 {
+
+    
     public Color color;
     public Color colorTeam02;
         public Color colorTeam01;

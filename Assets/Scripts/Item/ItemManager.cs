@@ -7,11 +7,21 @@ public class ItemManager : MonoBehaviour
 {
 
       // 物体列表，用于存储生成的物体
-    private List<GameObject> objectList = new List<GameObject>();
+   private List<GameObject> objectList = new List<GameObject>();
 
     // 物体预制体（将需要的物体拖到此变量中）
      public GameObject[] prefabs; // 存储所有的预制体
 
+    //物体数组
+    public GameObject[] objects;
+
+
+public PlayerObject PlayerObjectXXX;
+
+
+
+    // 定时器
+    private float timerObj;
 
 
     public GameObject bubblePrefab;  // 泡泡的预制体
@@ -39,8 +49,53 @@ public class ItemManager : MonoBehaviour
     }
 
 
+    void Start()
+    {
+        // 初始化定时器
+        timerObj = 8f;
+    }
 
-    public void useImem001(Vector3 position, Vector2 direction,float PlayerSpeed,int team,object gameObject)
+    void Update() 
+    {
+        // 定时器倒计时
+        timerObj -= Time.deltaTime;
+
+        // 每隔 8 秒执行一次
+        if (timerObj <= 0f)
+        {
+            timerObj = 8f; // 重置定时器
+
+            // 随机选择一个数字（1、2 或 3）
+            int randomNum = Random.Range(1, 3); // 1 到 3
+            int randomNumItemID = Random.Range(1, 4); // 1 到 3
+
+            float RandomTime = Random.Range(5f, 10f); // 1 到 3
+            // 打印选中的数字
+            Debug.Log("随机生成点" + randomNum);
+
+            // 随机选择物体数组中的一个物体
+            GameObject randomObject = objects[Random.Range(0, objects.Length)];
+           // GameObject CreateItem = prefabs[Random.Range(0, prefabs.Length)];
+
+
+            Debug.Log("随机出的道具是" + randomNumItemID);
+            //Debug.Log("Random number chosen: " + CreateItem);
+
+            // 在选中的物体位置生成预制体
+
+            Vector3 TransformA=randomObject.transform.position;
+             SetItem(TransformA,randomNumItemID,RandomTime);
+            Debug.Log("创建了一个道具 " + randomNumItemID);
+
+        }
+    }
+
+
+
+
+
+
+public void useImem001(Vector3 position, Vector2 direction,float PlayerSpeed,int team,object gameObject)
     {
          // 传递过来的位置信息和朝向
         Debug.Log("Position: " + position);
@@ -91,7 +146,7 @@ public class ItemManager : MonoBehaviour
     public void useImem003(Vector2 centerPosition, int team)
     {
         // 查找所有在范围内的物体
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(centerPosition, 3f);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(centerPosition, 10f);
 
         foreach (var hitCollider in hitColliders)
         {
@@ -99,16 +154,20 @@ public class ItemManager : MonoBehaviour
             if (hitCollider.CompareTag("Player"))
             {
                 // 获取该物体上的PlayerObject脚本
-                PlayerObject playerObject = hitCollider.GetComponent<PlayerObject>();
-
+                 PlayerObjectXXX = hitCollider.GetComponent<PlayerObject>();
+                      
+                       Debug.LogWarning("确定生效的玩家是"+hitCollider);
                 // 检查脚本是否存在
-                if (playerObject != null)
+                if (PlayerObjectXXX != null)
                 {
+                    Debug.LogWarning("这个玩家的队伍是"+PlayerObjectXXX.team);
                     // 如果team值与传入team值相反，设置速度为0
-                    if (playerObject.team != team)
+                    if (PlayerObjectXXX.team != team)
                     {
-                        playerObject.moveSpeed = 0;
-                        StartCoroutine(RestoreSpeedAfterDelay(playerObject, 3f));
+                        PlayerObjectXXX.moveSpeed = 0;
+                        PlayerObjectXXX.speedMultiplier=0f;
+                        Debug.LogWarning("改变玩家速度"+speedMultiplier);
+                        StartCoroutine(RestoreSpeedAfterDelay(PlayerObjectXXX, 3f));
                     }
                 }
             }
@@ -116,28 +175,33 @@ public class ItemManager : MonoBehaviour
     }
 
     // 恢复速度的协程
-    private IEnumerator RestoreSpeedAfterDelay(PlayerObject playerObject, float delay)
+    private IEnumerator RestoreSpeedAfterDelay(PlayerObject playerObjectReset, float delay)
     {
         // 等待指定时间（5秒）
         yield return new WaitForSeconds(delay);
 
         // 恢复速度为原始值（假设恢复前速度为原速度，这里可以修改为实际逻辑）
-        playerObject.moveSpeed = 40f; // 恢复原速度（这里假设原速度是5，实际应根据需要来设置）
+        playerObjectReset.moveSpeed = 50f; 
+         playerObjectReset.speedMultiplier=1f;
+        
+        // 恢复原速度（这里假设原速度是5，实际应根据需要来设置）
     }
 
 
 
-    public void SetItem(Vector3 position, int ItemID,int lifetime)
+    public void SetItem(Vector3 position, int ItemID,float lifetime)
     {
   
       // 生成物体并设置位置
-            GameObject newObject = Instantiate(prefabs[ItemID], position, Quaternion.identity);
+            GameObject newObject = Instantiate(prefabs[ItemID-1], position, Quaternion.identity);
             
             // 将物体添加到列表中
             objectList.Add(newObject);
-            
-            // 启动计时器处理生命周期
-            StartCoroutine(DestroyAfterTime(newObject, lifetime));
+
+        Debug.LogWarning("生成的道具是 "+ prefabs[ItemID-1]);
+
+        // 启动计时器处理生命周期
+        StartCoroutine(DestroyAfterTime(newObject, lifetime));
         
 
     }
@@ -155,6 +219,7 @@ public class ItemManager : MonoBehaviour
         // 从列表中移除已销毁的物体
         objectList.Remove(obj);
     }
+
 
 
 }
