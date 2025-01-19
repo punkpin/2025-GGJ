@@ -18,10 +18,11 @@ public class ItemBobble : BaseBubble
     }
 
 
- public void SetTeam(int teamid,object gameObject)
+ public void SetTeam(int teamid,object gameObject,Color color001)
 {
    team=teamid;
    gameObjectPlayer=gameObject;
+color=color001;
 }
     
     void Update()
@@ -48,12 +49,7 @@ private void OnCollisionEnter2D(Collision2D collision)
         Destroy(gameObject);
         Debug.Log("DestroyBubble of"+gameObject);
     }
-    else if(collidedObject.CompareTag("wall"))
-    {
-        // Destroy the collided object (the player in this case)
-        Destroy(gameObject);
-            Debug.Log("DestroyBubble of"+gameObject);
-    }
+   
   }
 
 }
@@ -64,15 +60,7 @@ private void OnCollisionEnter2D(Collision2D collision)
     {
  
 
-      if(team==1)
-      {
-          color=colorTeam01;
-      }
-      else if(team==2)
-      {
-          color=colorTeam02;
-      }
-
+     
 
 
         

@@ -235,7 +235,7 @@ public class PlayerObject : BaseBubble
         if (item==1) {
             // 调用ITEM的Use方法
             Vector3 playerPosition = transform.position;
-            ItemManager.useImem001(playerPosition, playerDirection,moveSpeed,team,gameObject);
+            ItemManager.useImem001(playerPosition, playerDirection,moveSpeed,team,gameObject,color);
         }
         else if(item==2)
         {

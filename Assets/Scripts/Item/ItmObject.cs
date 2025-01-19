@@ -25,11 +25,11 @@ public class ItmObject : MonoBehaviour
 
     }
 
-    private void OnTrigger(Collision2D collision)
+     public void OnCollisionEnter2D(Collision2D other)
     {
 
         // Check the collided object
-        GameObject collidedObject = collision.gameObject;
+        GameObject collidedObject = other.gameObject;
 
         Debug.LogWarning("道具被玩家撞击: " + collidedObject.name);
 
@@ -66,149 +66,6 @@ public class ItmObject : MonoBehaviour
     }
 }
 
-public class Player
-    {
-        public GameObject playerObject;
-        public float enterTime;
-
-        public Player(GameObject playerObject, float enterTime)
-        {
-            this.playerObject = playerObject;
-            this.enterTime = enterTime;
-        }
-    }
-
-    void Update()
-    {
-     if(ItenNumber!=4)
-      return;
-
-
-        // 如果计时器在运行
-        if (isTimerRunning)
-        {
-            timer -= Time.deltaTime;
-            
-            // 如果计时器结束，发放道具并重置
-            if (timer <= 0f)
-            {
-                GiveItemToFirstPlayer();
-                ResetQueue();
-            }
-        }
-    }
-
-    // 当玩家进入区域A
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(ItenNumber!=4)
-      return;
-
-
-
-        if (playerQueue.Count < maxQueueSize)
-        {
-            // 创建玩家对象并加入队列
-            Player newPlayer = new Player(other.gameObject, Time.time);
-            playerQueue.Enqueue(newPlayer);
-
-            // 启动计时器
-            if (playerQueue.Count == 1 && !isTimerRunning)
-            {
-                StartTimer();
-            }
-        }
-    }
-
-    // 当玩家退出区域A
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        
-        if(ItenNumber!=4)
-      return;
-
-
-        Player playerToRemove = null;
-        foreach (var player in playerQueue)
-        {
-            if (player.playerObject == other.gameObject)
-            {
-                playerToRemove = player;
-                break;
-            }
-        }
-
-        if (playerToRemove != null)
-        {
-            playerQueue = new Queue<Player>(playerQueue.Where(p => p != playerToRemove));
-            Debug.Log("Player removed: " + other.gameObject.name);
-            
-            // 如果队列为空，停止计时器
-            if (playerQueue.Count == 0)
-            {
-                StopTimer();
-            }
-            else
-            {
-                // 重置计时器并调整队列
-                ResetTimerAndAdjustQueue();
-            }
-        }
-    }
-
-    // 启动计时器
-    private void StartTimer()
-    {
-        timer = 3f; // 设置3秒计时器
-        isTimerRunning = true;
-    }
-
-    // 停止计时器
-    private void StopTimer()
-    {
-        isTimerRunning = false;
-    }
-
-    // 重置计时器并调整队列顺序
-    private void ResetTimerAndAdjustQueue()
-    {
-        timer = 3f;
-        // 重排队列：按进入时间排序
-        playerQueue = new Queue<Player>(playerQueue.OrderBy(p => p.enterTime));
-        StartTimer();
-    }
-
-    // 发放道具给队列最先进入的玩家
-    private void GiveItemToFirstPlayer()
-    {
-        if (playerQueue.Count > 0)
-        {
-            Player firstPlayer = playerQueue.Dequeue(); // 移除最前面的玩家
-
-     
-            Debug.Log("Giving item to: " + firstPlayer.playerObject.name);
-            GameObject XX=firstPlayer.playerObject;
-
-            PlayerObject001 = XX.GetComponent<PlayerObject>(); 
-        if(ItenNumber==3)
-          {
-        PlayerObject001.SetItem(3);
-
-        Debug.Log("给与玩家了一个"+ItenNumber);
-        Debug.Log("给与的玩家是："+PlayerObject001);
-         Destroy(gameObject);
-        Debug.Log("Destroy Item of"+gameObject);
-          }
-       }
-    
-    }
-
-    // 重置队列
-    private void ResetQueue()
-    {
-        playerQueue.Clear();
-        StopTimer();
-    }
 
 }
 

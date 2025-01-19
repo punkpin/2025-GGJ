@@ -2578,7 +2578,7 @@ PrefabInstance:
     - target: {fileID: 2743231221051265199, guid: 87f0076ba8a49e34f91d50f49f05d628, type: 3}
       propertyPath: BGMClips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 549c80668469bf84181064b39f249a6a, type: 3}
+      objectReference: {fileID: 8300000, guid: 70cda9aa01968da4383464176f7d01e3, type: 3}
     - target: {fileID: 4865112169797198555, guid: 87f0076ba8a49e34f91d50f49f05d628, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.4065337
