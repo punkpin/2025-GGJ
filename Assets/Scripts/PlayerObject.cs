@@ -8,6 +8,9 @@ public class PlayerObject : BaseBubble
     public Color color;
     public int team;
     public string skill;
+
+    public float speedMultiplier=1f;
+
     
 
 //item
@@ -35,6 +38,7 @@ public class PlayerObject : BaseBubble
     public KeyCode moveRightKey = KeyCode.D;
     public KeyCode useSkillKey = KeyCode.Q;
     public KeyCode useItemKey = KeyCode.E;
+
 
     private bool isConquerEnable = true;
     private bool clawing = false;
@@ -78,19 +82,19 @@ public class PlayerObject : BaseBubble
 
         if (Input.GetKey(moveUpKey))
         {
-            moveDirection.y += 1;
+            moveDirection.y += 1*speedMultiplier;
         }
         if (Input.GetKey(moveDownKey))
         {
-            moveDirection.y -= 1;
+            moveDirection.y -= 1*speedMultiplier;
         }
         if (Input.GetKey(moveLeftKey))
         {
-            moveDirection.x -= 1;
+            moveDirection.x -= 1*speedMultiplier;
         }
         if (Input.GetKey(moveRightKey))
         {
-            moveDirection.x += 1;
+            moveDirection.x += 1*speedMultiplier;
         }
          PlayeryDirection=moveDirection;
 
@@ -256,7 +260,9 @@ public class PlayerObject : BaseBubble
     {
         
         isBoosted = true;
-        moveSpeed = moveSpeed * 1.6f; // 将速度提升为基础速度的1.5倍
+
+        speedMultiplier=1.5f;
+       moveSpeed = 1.5f * defaultSpeed; // 将速度提升为基础速度的1.5倍
         Debug.Log("Speed boosted to: " + moveSpeed);
 
         // 启动定时器，5秒后恢复基础速度
@@ -266,7 +272,10 @@ public class PlayerObject : BaseBubble
 
      void ResetSpeed()
     {
-        moveSpeed = 40f; // 恢复到基础速度
+        moveSpeed = 50f; // 恢复到基础速度
+      
+      
+        speedMultiplier=1f;
         Debug.Log("Speed reset to base: " + moveSpeed);
         isBoosted = false;
     }

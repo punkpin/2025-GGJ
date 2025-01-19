@@ -9,13 +9,13 @@ public class ItmObject : MonoBehaviour
 
 
 
-  public PlayerObject PlayerObject;
+  public PlayerObject PlayerObject001;
 
 public int maxQueueSize = 4; // 最大队列大小
-    public float radius = 5f; // 区域半径
-    private Queue<Player> playerQueue = new Queue<Player>(); // 玩家队列
-    private float timer = 0f; // 计时器
-    private bool isTimerRunning = false; // 计时器状态
+    public float radius = 10f; // 区域半径
+    public Queue<Player> playerQueue = new Queue<Player>(); // 玩家队列
+    public float timer = 0f; // 计时器
+    public bool isTimerRunning = false; // 计时器状态
 
 
 
@@ -29,9 +29,61 @@ public bool isCloseItem;
     // Start is called before the first frame update
     void Start()
     {
+
+
     }
 
-private class Player
+private void OnCollisionEnter2D(Collision2D collision)
+{
+
+
+    // Check the collided object
+    GameObject collidedObject = collision.gameObject;
+
+
+
+     Debug.LogWarning("道具被玩家撞击: " + collidedObject.name);
+
+ 
+    // Check if the collided object has the "Player" tag
+    if (collidedObject.CompareTag("Player"))
+    {
+         PlayerObject001  = collidedObject.GetComponent<PlayerObject>();
+
+    if(ItenNumber==1)
+     {
+        PlayerObject001.SetItem(1);
+         Debug.Log("给与玩家了一个"+ItenNumber);
+        Debug.Log("给与的玩家是："+PlayerObject001);
+                 Destroy(gameObject);
+        Debug.Log("Destroy Item of"+gameObject);
+
+     }else if(ItenNumber==2)
+     {
+       PlayerObject001.SetItem(2);
+        Debug.Log("给与玩家了一个"+ItenNumber);
+        Debug.Log("给与的玩家是："+PlayerObject001);
+                Destroy(gameObject);
+        Debug.Log("Destroy Item of"+gameObject);
+     }
+     else if(ItenNumber==3)
+     {
+       PlayerObject001.SetItem(3);
+        Debug.Log("给与玩家了一个"+ItenNumber);
+        Debug.Log("给与的玩家是："+PlayerObject001);
+                Destroy(gameObject);
+        Debug.Log("Destroy Item of"+gameObject);
+     }
+
+    }
+  }
+
+
+
+
+
+
+public class Player
     {
         public GameObject playerObject;
         public float enterTime;
@@ -45,7 +97,7 @@ private class Player
 
     void Update()
     {
- if(ItenNumber!=3)
+     if(ItenNumber!=4)
       return;
 
 
@@ -66,6 +118,11 @@ private class Player
     // 当玩家进入区域A
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(ItenNumber!=4)
+      return;
+
+
+
         if (playerQueue.Count < maxQueueSize)
         {
             // 创建玩家对象并加入队列
@@ -83,7 +140,11 @@ private class Player
     // 当玩家退出区域A
     private void OnTriggerExit2D(Collider2D other)
     {
-        // 移除离开的玩家
+        
+        if(ItenNumber!=4)
+      return;
+
+
         Player playerToRemove = null;
         foreach (var player in playerQueue)
         {
@@ -145,10 +206,13 @@ private class Player
             Debug.Log("Giving item to: " + firstPlayer.playerObject.name);
             GameObject XX=firstPlayer.playerObject;
 
-            PlayerObject = XX.GetComponent<PlayerObject>(); 
+            PlayerObject001 = XX.GetComponent<PlayerObject>(); 
         if(ItenNumber==3)
           {
-        PlayerObject.SetItem(3);
+        PlayerObject001.SetItem(3);
+
+        Debug.Log("给与玩家了一个"+ItenNumber);
+        Debug.Log("给与的玩家是："+PlayerObject001);
          Destroy(gameObject);
         Debug.Log("Destroy Item of"+gameObject);
           }
@@ -162,39 +226,6 @@ private class Player
         playerQueue.Clear();
         StopTimer();
     }
-
-
-
-
-    
-private void OnCollisionEnter2D(Collision2D collision)
-{
-
-
-    // Check the collided object
-    GameObject collidedObject = collision.gameObject;
-     Debug.Log("Collided with: " + collidedObject.name);
-
- 
-    // Check if the collided object has the "Player" tag
-    if (collidedObject.CompareTag("Player"))
-    {
-         PlayerObject = collidedObject.GetComponent<PlayerObject>(); 
-    if(ItenNumber==1)
-     {
-        PlayerObject.SetItem(1);
-                 Destroy(gameObject);
-        Debug.Log("Destroy Item of"+gameObject);
-
-     }else if(ItenNumber==2)
-     {
-       PlayerObject.SetItem(2);
-                Destroy(gameObject);
-        Debug.Log("Destroy Item of"+gameObject);
-     }
-
-    }
-  }
 
 }
 
