@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
     public GameManager  GameManagerStart;
 
   public float bgmVolume = 0.8f;  // 背景音乐音量
- public float sfxVolume = 0.8f;  // 音效音量
+  public float sfxVolume = 0.8f;  // 音效音量
 
     // 当前的背景音乐索引
     private int currentBGMIndex = 0;

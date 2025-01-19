@@ -30,6 +30,8 @@ public PlayerObject PlayerObjectXXX;
 
 
 
+public AudioClip[] BGMClips;  // 管理背景音乐
+  public AudioSource bgmAudioSource;
 
 
 
@@ -51,6 +53,12 @@ public PlayerObject PlayerObjectXXX;
 
     void Start()
     {
+
+
+ bgmAudioSource = gameObject.AddComponent<AudioSource>();
+        bgmAudioSource.clip = BGMClips[0];  
+            bgmAudioSource.Play();
+
         // 初始化定时器
         timerObj = 8f;
     }

@@ -22,7 +22,7 @@ public class PlayerSelectHandler : MonoBehaviour
     {
         if (playerSelectionResult.IsReady())
         {
-            SceneManager.LoadScene("GameCore");
+            SceneManager.LoadScene("GameCoreLINYANG001");
         }
     }
 
