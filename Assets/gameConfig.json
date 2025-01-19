@@ -57,8 +57,8 @@
         {
             "skill": "fast",
             "location": {
-                "x": 10,
-                "y": 10,
+                "x": 132,
+                "y": 82,
                 "width": 8,
                 "height": 8
             }
@@ -66,8 +66,8 @@
         {
             "skill": "fly",
             "location": {
-                "x": 100,
-                "y": 10,
+                "x": 14,
+                "y": 82,
                 "width": 8,
                 "height": 8
             }
@@ -75,8 +75,8 @@
         {
             "skill": "large",
             "location": {
-                "x": 10,
-                "y": 60,
+                "x": 132,
+                "y": 14,
                 "width": 8,
                 "height": 8
             }
@@ -84,8 +84,8 @@
         {
             "skill": "claw",
             "location": {
-                "x": 100,
-                "y": 60,
+                "x": 14,
+                "y": 14,
                 "width": 8,
                 "height": 8
             }

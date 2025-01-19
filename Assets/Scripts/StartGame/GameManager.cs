@@ -3,63 +3,58 @@ using UnityEngine.SceneManagement;  // 用于加载场景
 using UnityEngine.UI;
 
 
-public  class GameManager: MonoBehaviour
+public class GameManager: MonoBehaviour
 {
 
   public float bgmAudioSourceValue;
   public float sfxAudioSourceValue;
 
 
-[SerializeField] GameObject buttonUI;
+    [SerializeField]
+    GameObject buttonUI;
 
+    public Slider Slider001;          
+    public Slider Slider002;
 
-
-
-public Slider Slider001;          
-public Slider Slider002;
+    public string sceneName;
      
     void Start()
     {
-   
         ShotDownSetting();
         Slider001.onValueChanged.AddListener(OnSlider001ValueChanged);
-         Slider002.onValueChanged.AddListener(OnSlider002ValueChanged);
-       
+        Slider002.onValueChanged.AddListener(OnSlider002ValueChanged);   
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartGame(sceneName); // Replace "YourSceneName" with the actual scene name you want to load
+        }
+    }
 
-
-    
     void OnSlider001ValueChanged(float value)
     {
      
         float Values = Mathf.Lerp(0f, 1f, value);
-           bgmAudioSourceValue=Values;
-        
+        bgmAudioSourceValue=Values;
     }
+
     void OnSlider002ValueChanged(float value)
     {
-     
         float Values = Mathf.Lerp(0f, 1f, value);
-               sfxAudioSourceValue=Values;
-        
+        sfxAudioSourceValue=Values;      
     }
 
+    public void ShowSetting()
+    {
+        buttonUI.SetActive(true);
+    }
 
-
-
-
-
-public   void ShowSetting()
-{
-      buttonUI.SetActive(true);
-}
-
-public   void ShotDownSetting()
-{
-     buttonUI.SetActive(false);
-}
-
+    public void ShotDownSetting()
+    {
+        buttonUI.SetActive(false);
+    }
 
     public static void StartGame(string sceneName)
     {
@@ -68,12 +63,11 @@ public   void ShotDownSetting()
 
     public static void ExitGame()
     {
-
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#else
+    #else
         Application.Quit();
-#endif
+    #endif
     }
 }
 

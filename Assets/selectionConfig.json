@@ -31,7 +31,7 @@
         {
             "name": "A1",
             "team": 1,
-            "color": "#3333CC",
+            "color": "#F4C94D",
             "keymap": {
                 "up": "w",
                 "down": "s",
@@ -44,16 +44,16 @@
             "textlocation" : 0
         },
         {
-            "name": "A2",
-            "team": 1,
-            "color": "#44FFFF",
+            "name": "B2",
+            "team": 2,
+            "color": "#8CACF8",
             "keymap": {
-                "up": "i",
-                "down": "k",
-                "left": "j",
-                "right": "l",
-                "skill": "u",
-                "item": "o"
+                "up": "up",
+                "down": "down",
+                "left": "left",
+                "right": "right",
+                "skill": "right ctrl",
+                "item": "right alt"
             },
             "location": 1,
             "textlocation" : 1
@@ -61,7 +61,7 @@
         {
             "name": "B1",
             "team": 2,
-            "color": "#33CCCC",
+            "color": "#9E65CC",
             "keymap": {
                 "up": "g",
                 "down": "b",
@@ -74,16 +74,16 @@
             "textlocation" : 2
         },
         {
-            "name": "B2",
-            "team": 2,
-            "color": "#4444FF",
+            "name": "A2",
+            "team": 1,
+            "color": "#F28B8B",
             "keymap": {
-                "up": "up",
-                "down": "down",
-                "left": "left",
-                "right": "right",
-                "skill": "right ctrl",
-                "item": "right alt"
+                "up": "i",
+                "down": "k",
+                "left": "j",
+                "right": "l",
+                "skill": "u",
+                "item": "o"
             },
             "location": 3,
             "textlocation" : 3

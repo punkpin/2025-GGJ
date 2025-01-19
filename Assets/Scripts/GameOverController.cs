@@ -7,6 +7,7 @@ using TMPro;
 public class GameOverController : MonoBehaviour
 {
     public GameResult gameResult;
+    public string sceneName;
 
     public float animationTime = 3.0f;
 
@@ -27,7 +28,7 @@ public class GameOverController : MonoBehaviour
     {
         countdown = 2.0f * animationTime;
         gameResult = FindObjectOfType<GameResult>();
-        targetBarPosition = (gameResult.team1Score - gameResult.team2Score) / 100.0f * 160.0f;
+        targetBarPosition = (gameResult.team1Score - gameResult.team2Score) / 100.0f * 480.0f;
         team1Status.text = "";
         team2Status.text = "";
         team1Score.text = "";
@@ -67,7 +68,7 @@ public class GameOverController : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 Destroy(gameResult.gameObject);
-                SceneManager.LoadScene("StartGame");
+                SceneManager.LoadScene(sceneName);
             }
         }
     }
