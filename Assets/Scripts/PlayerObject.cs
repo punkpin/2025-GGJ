@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class PlayerObject : BaseBubble 
 {
@@ -10,8 +10,8 @@ public class PlayerObject : BaseBubble
     public string skill;
 
     public float speedMultiplier=1f;
+   public int characterIndex;
 
-    
 
 //item
     public int TestItem;
@@ -43,26 +43,38 @@ public class PlayerObject : BaseBubble
     private bool isConquerEnable = true;
     private bool clawing = false;
 
-  private GameGenerator gameGenerator;
+  private GameGenerator    gameGenerator ;
 
     private float defaultSpeed;
     private float defaultColliderSize;
 
     private Vector3 defaultScale;
 
-    new void Start()
+     void Start()
     {
+
         base.Start();
        
 //ITEM 
        SetItem(TestItem);
         ItemManager itemManager = ItemManager.Instance;  
+  
          GameObject targetObject = GameObject.Find("itemManager");
         if (targetObject != null)
         {
             ItemManager = targetObject.GetComponent<ItemManager>();
+             
         }
 //
+
+        string objectName = gameObject.name;
+  
+         if (objectName == "A1") characterIndex = 0;
+        else if (objectName == "A2") characterIndex = 1;
+        else if (objectName == "B1") characterIndex = 2;
+        else if (objectName == "B2") characterIndex = 3;
+
+
 
 
 
@@ -145,6 +157,10 @@ public class PlayerObject : BaseBubble
             Debug.Log("Skill is unavailable");
             return;
         }
+
+       
+         Debug.Log("Skill技能CD开始刘流转 ");
+          UpdateSkillUI();
         switch (skill)
         {
             case "fast":
@@ -210,14 +226,49 @@ public class PlayerObject : BaseBubble
 /// </summary>
 
 
+
+public void UpdateSkillUI()
+{
+
+ GameObject UImanager = GameObject.Find("CharacterUIManager");
+
+        if (UImanager != null)
+        {
+            // 获取该物体上的 PlayerController 脚本组件
+            CharacterUIManager characterUIManager001 = UImanager.GetComponent<CharacterUIManager>();
+
+            // 调用 PlayerController 中的方法
+           characterUIManager001.UpdateScrool(characterIndex);
+        }
+}
+
+    
+
+public void UpdateitemUI(){
+    
+    GameObject UImanager = GameObject.Find("CharacterUIManager");
+
+        if (UImanager != null)
+        {
+            // 获取该物体上的 PlayerController 脚本组件
+            CharacterUIManager characterUIManager001 = UImanager.GetComponent<CharacterUIManager>();
+
+            // 调用 PlayerController 中的方法
+          characterUIManager001.UpdateUI(characterIndex, item);
+        }
+
+
+}
     public void SetItem(int itemNumber)
     {
         item = itemNumber;
+       UpdateitemUI();
         Debug.Log("获得了物品"+itemNumber);
     }
 
-    private void UseItem()
+    public void UseItem()
     {
+        UpdateitemUI();
         // Implement item logic here
            if (item != 0)
         {
@@ -255,6 +306,8 @@ public class PlayerObject : BaseBubble
    
     }
 
+
+    
 
  void BoostSpeed()
     {

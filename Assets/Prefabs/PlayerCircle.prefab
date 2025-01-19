@@ -103,7 +103,8 @@ MonoBehaviour:
   team: 0
   skill: 
   speedMultiplier: 1
-  TestItem: 2
+  characterIndex: 0
+  TestItem: 0
   item: 0
   isBoosted: 0
   PlayeryDirection: {x: 0, y: 0}
