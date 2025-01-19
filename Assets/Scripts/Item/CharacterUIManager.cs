@@ -75,7 +75,7 @@ Debug.LogWarning("开始机能CD转圈: " + playerID);
         float targetValue = 0f; // 目标值为 0
         float elapsedTime = 0f; // 经过的时间
 
-         Debug.LogWarning("机能CD转圈转的是: " + scrollbarArray[X].fillAmount );
+         Debug.LogWarning("机能CD转圈转的是: " + scrollbarArray[X].fillAmount);
     
         // 让Scrollbar值从1渐变到0
         while (elapsedTime < duration)
