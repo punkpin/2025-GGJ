@@ -1,7 +1,7 @@
 {
     "gametime": 60,
     "ground": {
-        "width": 154,
+        "width": 184,
         "height": 104,
         "color": "#333333"
     },
@@ -12,7 +12,7 @@
                 "x": 0,
                 "y": 0,
                 "width": 2,
-                "height": 154
+                "height": 184
             }
         },
         {
@@ -20,14 +20,14 @@
             "location": {
                 "x": 0,
                 "y": 0,
-                "width": 154,
+                "width": 184,
                 "height": 2
             }
         },
         {
             "color": "#AAAAAA",
             "location": {
-                "x": 152,
+                "x": 182,
                 "y": 0,
                 "width": 2,
                 "height": 104
@@ -38,7 +38,7 @@
             "location": {
                 "x": 0,
                 "y": 102,
-                "width": 154,
+                "width": 184,
                 "height": 2
             }
         }
@@ -57,7 +57,7 @@
         {
             "skill": "fast",
             "location": {
-                "x": 132,
+                "x": 162,
                 "y": 82,
                 "width": 1.2,
                 "height": 1.2
@@ -75,7 +75,7 @@
         {
             "skill": "large",
             "location": {
-                "x": 132,
+                "x": 162,
                 "y": 14,
                 "width": 1.2,
                 "height": 1.2

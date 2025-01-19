@@ -21,7 +21,7 @@ public class PlayerObject : BaseBubble
     public ItemManager ItemManager;
 
     public float colliderSize = 4.0f;
-    public float skillCoolDown = 10.0f;
+    public float skillCoolDown = 2.0f;
     public float skillTimeRemaining;
     public float freezeTimeRemaining;
     public Vector2 moveDirection;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6730140383166405097}
   m_Layer: 0
   m_Name: Whisker_Ingame
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveX: 0
   moveY: 0
-  delay: 1
+  playerObject: {fileID: 0}
   skillSound: {fileID: 8300000, guid: d8734558677dfbe4d9bbe5fc385b3e2c, type: 3}
 --- !u!114 &6730140383166405097
 MonoBehaviour:
@@ -146,12 +146,13 @@ MonoBehaviour:
   TestItem: 0
   item: 0
   isBoosted: 0
-  PlayeryDirection: {x: 0, y: 0}
+  playerDirection: {x: 0, y: 0}
   ItemManager: {fileID: 0}
   colliderSize: 4
-  skillCoolDown: 10
+  skillCoolDown: 2
   skillTimeRemaining: 0
   freezeTimeRemaining: 0
+  moveDirection: {x: 0, y: 0}
   moveUpKey: 119
   moveDownKey: 115
   moveLeftKey: 97
