@@ -8,62 +8,57 @@ public class ItemBobble : BaseBubble
     
     public Color color;
     public Color colorTeam02;
-        public Color colorTeam01;
+    public Color colorTeam01;
     public object gameObjectPlayer;
     public int team;
+
+    public float remainingTime = 3.0f;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-
  public void SetTeam(int teamid,object gameObject,Color color001)
-{
-   team=teamid;
-   gameObjectPlayer=gameObject;
-color=color001;
-}
+    {
+        team=teamid;
+        gameObjectPlayer=gameObject;
+        color=color001;
+        remainingTime = 3.0f;
+    }
     
     void Update()
     {
-
-     Conquer();
-
-
+        remainingTime -= Time.deltaTime;
+        if (remainingTime <= 0)
+        {
+            Destroy(gameObject);
+        }
+        Conquer();
     }
-private void OnCollisionEnter2D(Collision2D collision)
-{
-
-
-    // Check the collided object
-    GameObject collidedObject = collision.gameObject;
-
-     Debug.Log("Collided with: " + collidedObject.name);
-
-  if(collidedObject!=gameObjectPlayer){
-    // Check if the collided object has the "Player" tag
-    if (collidedObject.CompareTag("Player"))
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Destroy the collided object (the player in this case)
-        Destroy(gameObject);
-        Debug.Log("DestroyBubble of"+gameObject);
+
+
+        // Check the collided object
+        GameObject collidedObject = collision.gameObject;
+
+        Debug.Log("Collided with: " + collidedObject.name);
+
+        if(collidedObject!=gameObjectPlayer){
+            // Check if the collided object has the "Player" tag
+            if (collidedObject.CompareTag("Player"))
+            {
+                // Destroy the collided object (the player in this case)
+                Destroy(gameObject);
+                Debug.Log("DestroyBubble of"+gameObject);
+            }
+    
     }
-   
-  }
 
-}
-
-
-
+    }
     private void Conquer()
     {
- 
-
-     
-
-
-        
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2f);
 
         foreach (Collider2D collider in colliders)

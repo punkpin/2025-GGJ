@@ -38,7 +38,7 @@ public class PlayerControllerObject : MonoBehaviour
         playerText = GetComponentInChildren<TextMeshPro>();
         if (playerText != null)
         {
-            playerText.text = $"Player {playerController.name}\n上: {keymap.up.ToUpper()} 下: {keymap.down.ToUpper()}\n左: {keymap.left.ToUpper()} 右: {keymap.right.ToUpper()}\n技能: {keymap.skill.ToUpper()}\n";
+            playerText.text = $"Player {playerController.name}\n上: {keymap.up.ToUpper()} 下: {keymap.down.ToUpper()}\n左: {keymap.left.ToUpper()} 右: {keymap.right.ToUpper()}\n技能: {keymap.skill.ToUpper()}\n道具: {keymap.item.ToUpper()}";
             playerText.color = textColor;
         }
     }

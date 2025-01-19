@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PlayerSelection.unity
     guid: dc77b097e8058e040b2415eb60868f43
   - enabled: 1
-    path: Assets/Scenes/GameCore2.unity
+    path: Assets/Scenes/GameCore.unity
     guid: ed28a5311027db546b49b7cbdd07b8ad
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
