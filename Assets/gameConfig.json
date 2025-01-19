@@ -59,8 +59,8 @@
             "location": {
                 "x": 132,
                 "y": 82,
-                "width": 8,
-                "height": 8
+                "width": 1.2,
+                "height": 1.2
             }
         },
         {
@@ -68,8 +68,8 @@
             "location": {
                 "x": 14,
                 "y": 82,
-                "width": 8,
-                "height": 8
+                "width": 1.2,
+                "height": 1.2
             }
         },
         {
@@ -77,8 +77,8 @@
             "location": {
                 "x": 132,
                 "y": 14,
-                "width": 8,
-                "height": 8
+                "width": 1.2,
+                "height": 1.2
             }
         },
         {
@@ -86,8 +86,8 @@
             "location": {
                 "x": 14,
                 "y": 14,
-                "width": 8,
-                "height": 8
+                "width": 1.2,
+                "height": 1.2
             }
         }
     ],

@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameResult: {fileID: 0}
-  sceneName: StartGame_2
+  sceneName: StartGame
   animationTime: 3
   team1Status: {fileID: 2054087568}
   team1Score: {fileID: 1810517596}

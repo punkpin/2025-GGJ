@@ -8,8 +8,7 @@ public class GameGenerator : MonoBehaviour
 {
     public GroundObject groundPrefab;
     public BombObject bombPrefab;
-    public PlayerObject playerPrefab;
-    public ItemObject itemPrefab;
+    public List<PlayerObject> playerPrefabs;
     public GameConfig gameConfig;
     public GameResult gameResult;
     public TextMeshProUGUI showtimeText;
@@ -31,9 +30,7 @@ public class GameGenerator : MonoBehaviour
         playerSelectionResult = FindObjectOfType<PlayerSelectionResult>();
         GenerateGround();
         GenerateWalls();
-        GenerateBombs();
         GeneratePlayers();
-        GenerateItems();
         AdjustCamera();
         groundObjectCount = groundObjects.Values.Count(x => !x.isWall);
         remainingTime = gameConfig.configData.gametime + countdownTime;
@@ -107,17 +104,6 @@ public class GameGenerator : MonoBehaviour
         }
     }
 
-    void GenerateBombs()
-    {
-        var bombs = gameConfig.configData.bombs;
-        GameObject bombParent = new GameObject("BombParent");
-        foreach (var bomb in bombs)
-        {
-            BombObject bombObject = Instantiate(bombPrefab, new Vector3(bomb.location.x + 0.5f * bomb.location.width, bomb.location.y + 0.5f * bomb.location.height, -1), Quaternion.identity);
-            bombObject.transform.parent = bombParent.transform;
-        }
-    }
-
     void GeneratePlayers()
     {
         var players = gameConfig.configData.players;
@@ -126,7 +112,7 @@ public class GameGenerator : MonoBehaviour
         foreach (var player in players)
         {
             PlayerSelection playerSelection = playerSelections.FirstOrDefault(ps => ps.skill == player.skill);
-            
+            PlayerObject playerPrefab = playerPrefabs.FirstOrDefault(p => p.skill == player.skill);
             PlayerObject playerObj = Instantiate(playerPrefab, new Vector3(player.location.x + 0.5f * player.location.width, player.location.y + 0.5f * player.location.width, -2), Quaternion.identity);
             playerObj.name = playerSelection.playerController.name;
             playerObj.transform.localScale = new Vector3(player.location.width, player.location.height, 1);
@@ -147,18 +133,6 @@ public class GameGenerator : MonoBehaviour
             {
                 teamScoreList.Add(new TeamScore { teamId = playerObj.team, score = 0 });
             }
-        }
-    }
-
-    void GenerateItems()
-    {
-        var items = gameConfig.configData.items;
-        GameObject itemParent = new GameObject("ItemParent");
-        foreach (var item in items)
-        {
-            ItemObject itemObj = Instantiate(itemPrefab, new Vector3(item.location.x, item.location.y, -1), Quaternion.identity);
-            itemObj.transform.parent = itemParent.transform;
-            // Set item specific properties if needed
         }
     }
 
@@ -250,7 +224,7 @@ public class GameGenerator : MonoBehaviour
     void UpdateUI()
     {
         // Update showtime text
-        showtimeText.text = $"{showTime:F2}";
+        showtimeText.text = $"{showTime:F0}";
 
         // Process and update teamScoreList text
         string processedTeamScores = ProcessTeamScores(teamScoreList);

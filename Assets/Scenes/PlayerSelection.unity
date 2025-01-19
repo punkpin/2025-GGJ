@@ -172,6 +172,7 @@ MonoBehaviour:
   - {fileID: -3813603190708883001, guid: 05f172a9e9f17ee47b4b027c0ac66c47, type: 3}
   - {fileID: -5384823841796057859, guid: dec63228fae1d7349a7b655113b5965e, type: 3}
   skillSelectObject: {fileID: 2435803697788850822, guid: c92f569e7255f4f45a404da23e57ada4, type: 3}
+  sceneName: GameCore
 --- !u!1 &329569781
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class BaseBubble : MonoBehaviour
         rb.gravityScale = 0;
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         collider2D.sharedMaterial = Resources.Load<PhysicsMaterial2D>("BouncyMaterial");
-        collider2D.radius = 0.5f;
+        collider2D.radius = 4f;
         GetComponent<SpriteRenderer>().color = circleColor;
     }
 

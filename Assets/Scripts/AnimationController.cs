@@ -10,7 +10,7 @@ public class AnimationController : MonoBehaviour
 {
     public float moveX = 0.0f;
     public float moveY = 0.0f;
-    public float delay = 1.0f;
+    public PlayerObject playerObject;
 
     private string lastDirection;
     private Animator animator;
@@ -20,6 +20,7 @@ public class AnimationController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        playerObject = GetComponent<PlayerObject>();
         
         animator.SetBool("MoveUp", false);
         animator.SetBool("MoveDown", false);
@@ -33,16 +34,25 @@ public class AnimationController : MonoBehaviour
 
     void Update()
     {  
-        UpdateAnimationState(moveX, moveY);
+        // float moveX = 0.0f;
+        // float moveY = 0.0f;
 
-        if (moveX < 0)
-        {
-            Flip(true);
-        }
-        else if (moveX > 0)
-        {
-            Flip(false);
-        }
+        // if (playerObject != null)
+        // {
+        //     moveX = playerObject.moveDirection.x;
+        //     moveY = playerObject.moveDirection.y;
+        // }
+
+        // UpdateAnimationState(moveX, moveY);
+
+        // if (moveX < 0)
+        // {
+        //     Flip(true);
+        // }
+        // else if (moveX > 0)
+        // {
+        //     Flip(false);
+        // }
     }
 
     void UpdateAnimationState(float moveX, float moveY)
@@ -112,14 +122,13 @@ public class AnimationController : MonoBehaviour
         PlaySound(skillSound);
     }
     
-    public void TriggerDizzy()
+    public void TriggerDizzy(float interval)
     {
-        animator.SetBool("isDizzy",true);
-        
-        StartCoroutine(ChangeBool());
+        animator.SetBool("isDizzy",true);     
+        StartCoroutine(ChangeBool(interval));
     }
     
-    private IEnumerator ChangeBool()
+    private IEnumerator ChangeBool(float delay)
     {
         yield return new WaitForSeconds(delay);
 

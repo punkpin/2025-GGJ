@@ -7,6 +7,7 @@ public class PlayerSelectHandler : MonoBehaviour
 {
     public List<PlayerControllerObject> playerControllerObjects;
     public SkillSelectObject skillSelectObject;
+    public string sceneName;
     private PlayerSelectionConfig playerSelectionConfig;
     private PlayerSelectionResult playerSelectionResult;
 
@@ -22,7 +23,7 @@ public class PlayerSelectHandler : MonoBehaviour
     {
         if (playerSelectionResult.IsReady())
         {
-            SceneManager.LoadScene("GameCore");
+            SceneManager.LoadScene(sceneName);
         }
     }
 

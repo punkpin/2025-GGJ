@@ -10,144 +10,123 @@ public class PlayerObject : BaseBubble
     public string skill;
 
     public float speedMultiplier=1f;
-   public int characterIndex;
+    public int characterIndex;
 
-
-//item
     public int TestItem;
     public int item;
 
     public bool isBoosted;
-   public Vector2 PlayeryDirection;
+    public Vector2 playerDirection;
 
-
-       public ItemManager ItemManager;
-
-//item
+    public ItemManager ItemManager;
 
     public float colliderSize = 4.0f;
     public float skillCoolDown = 10.0f;
-
     public float skillTimeRemaining;
-
     public float freezeTimeRemaining;
-
+    public Vector2 moveDirection;
     public KeyCode moveUpKey = KeyCode.W;
     public KeyCode moveDownKey = KeyCode.S;
     public KeyCode moveLeftKey = KeyCode.A;
     public KeyCode moveRightKey = KeyCode.D;
     public KeyCode useSkillKey = KeyCode.Q;
     public KeyCode useItemKey = KeyCode.E;
-
-
+    
     private bool isConquerEnable = true;
     private bool clawing = false;
-
-  private GameGenerator    gameGenerator ;
+    private GameGenerator gameGenerator;
+    private AnimationController animationController;
 
     private float defaultSpeed;
     private float defaultColliderSize;
-
     private Vector3 defaultScale;
-
-     void Start()
+    void Start()
     {
-
-        base.Start();
-       
-//ITEM 
-       SetItem(TestItem);
+        base.Start();      
+        SetItem(TestItem);
         ItemManager itemManager = ItemManager.Instance;  
-  
-         GameObject targetObject = GameObject.Find("itemManager");
+        GameObject targetObject = GameObject.Find("itemManager");
         if (targetObject != null)
         {
-            ItemManager = targetObject.GetComponent<ItemManager>();
-             
+            ItemManager = targetObject.GetComponent<ItemManager>();             
         }
-//
-
         string objectName = gameObject.name;
   
-         if (objectName == "A1") characterIndex = 0;
+        if (objectName == "A1") characterIndex = 0;
         else if (objectName == "A2") characterIndex = 1;
         else if (objectName == "B1") characterIndex = 2;
         else if (objectName == "B2") characterIndex = 3;
-
-
-
-
 
         defaultSpeed = moveSpeed;
         defaultColliderSize = colliderSize;
         defaultScale = gameObject.transform.localScale;
         gameGenerator = FindObjectOfType<GameGenerator>();
+        animationController = GetComponent<AnimationController>();
     }
 
     void Update()
     {
+        if (!gameGenerator.globalFreeze)  
+        {
+            moveDirection = Vector2.zero;
+            if (Input.GetKey(moveUpKey))
+            {
+                moveDirection.y += 1*speedMultiplier;
+            }
+            if (Input.GetKey(moveDownKey))
+            {
+                moveDirection.y -= 1*speedMultiplier;
+            }
+            if (Input.GetKey(moveLeftKey))
+            {
+                moveDirection.x -= 1*speedMultiplier;
+            }
+            if (Input.GetKey(moveRightKey))
+            {
+                moveDirection.x += 1*speedMultiplier;
+            }
 
+            playerDirection = moveDirection;
 
- if (!gameGenerator.globalFreeze)  
-{
-        Vector2 moveDirection = Vector2.zero;
+            if (isConquerEnable)
+            {
+                Conquer();
+            }
 
-        if (Input.GetKey(moveUpKey))
-        {
-            moveDirection.y += 1*speedMultiplier;
-        }
-        if (Input.GetKey(moveDownKey))
-        {
-            moveDirection.y -= 1*speedMultiplier;
-        }
-        if (Input.GetKey(moveLeftKey))
-        {
-            moveDirection.x -= 1*speedMultiplier;
-        }
-        if (Input.GetKey(moveRightKey))
-        {
-            moveDirection.x += 1*speedMultiplier;
-        }
-         PlayeryDirection=moveDirection;
+            if (freezeTimeRemaining > 0)
+            {
+                freezeTimeRemaining -= Time.deltaTime;
+            }
+            else
+            {
+                gameObject.transform.rotation = Quaternion.identity;
+                Move(moveDirection);
+            }
 
-        if (isConquerEnable)
-        {
-            Conquer();
-        }
+            if (skillCoolDown > 0)
+            {
+                skillCoolDown -= Time.deltaTime;
+            }
 
-        if (freezeTimeRemaining > 0)
-        {
-            freezeTimeRemaining -= Time.deltaTime;
-        }
-        else
-        {
-            Move(moveDirection);
-        }
+            if (Input.GetKeyDown(useSkillKey))
+            {
+                UseSkill();
+            }
 
-        if (skillCoolDown > 0)
-        {
-            skillCoolDown -= Time.deltaTime;
-        }
+            if (Input.GetKeyDown(useItemKey))
+            {
+                UseItem();
+            }
 
-        if (Input.GetKeyDown(useSkillKey))
-        {
-            UseSkill();
+            if (skillTimeRemaining > 0)
+            {
+                skillTimeRemaining -= Time.deltaTime;
+            }
+            else
+            {
+                ResetSkill();
+            }
         }
-
-        if (Input.GetKeyDown(useItemKey))
-        {
-            UseItem();
-        }
-
-        if (skillTimeRemaining > 0)
-        {
-            skillTimeRemaining -= Time.deltaTime;
-        }
-        else
-        {
-            ResetSkill();
-        }
-       }
     }
 
     private void UseSkill()
@@ -158,9 +137,8 @@ public class PlayerObject : BaseBubble
             return;
         }
 
-       
-         Debug.Log("Skill技能CD开始刘流转 ");
-          UpdateSkillUI();
+        Debug.Log("Skill技能CD开始刘流转 ");
+        UpdateSkillUI();
         switch (skill)
         {
             case "fast":
@@ -219,123 +197,80 @@ public class PlayerObject : BaseBubble
         }
     }
 
+    public void UpdateSkillUI()
+    {
+        GameObject UImanager = GameObject.Find("CharacterUIManager");
+        if (UImanager != null)
+        {
+        // 获取该物体上的 PlayerController 脚本组件
+        CharacterUIManager characterUIManager001 = UImanager.GetComponent<CharacterUIManager>();
+        // 调用 PlayerController 中的方法
+        characterUIManager001.UpdateScrool(characterIndex);
+        }
+    }
 
-
-    /// <summary>
-/// itme
-/// </summary>
-
-
-
-public void UpdateSkillUI()
-{
-
- GameObject UImanager = GameObject.Find("CharacterUIManager");
-
+    public void UpdateitemUI(){       
+        GameObject UImanager = GameObject.Find("CharacterUIManager");
         if (UImanager != null)
         {
             // 获取该物体上的 PlayerController 脚本组件
             CharacterUIManager characterUIManager001 = UImanager.GetComponent<CharacterUIManager>();
 
             // 调用 PlayerController 中的方法
-           characterUIManager001.UpdateScrool(characterIndex);
+        characterUIManager001.UpdateUI(characterIndex, item);
         }
-}
-
-    
-
-public void UpdateitemUI(){
-    
-    GameObject UImanager = GameObject.Find("CharacterUIManager");
-
-        if (UImanager != null)
-        {
-            // 获取该物体上的 PlayerController 脚本组件
-            CharacterUIManager characterUIManager001 = UImanager.GetComponent<CharacterUIManager>();
-
-            // 调用 PlayerController 中的方法
-          characterUIManager001.UpdateUI(characterIndex, item);
-        }
-
-
-}
+    }
     public void SetItem(int itemNumber)
     {
         item = itemNumber;
-       UpdateitemUI();
+        UpdateitemUI();
         Debug.Log("获得了物品"+itemNumber);
     }
 
     public void UseItem()
     {
         UpdateitemUI();
-        // Implement item logic here
-           if (item != 0)
+        if (item != 0)
         {
-            
-
-            if(item==1){
-               // 调用ITEM的Use方法
-               Vector3 playerPosition = transform.position;
-
-                ItemManager.useImem001(playerPosition, PlayeryDirection,moveSpeed,team,gameObject);
-            }
-            else if(item==2)
-            {
-                // 调用ITEM的Use方法
-
-                   // ItemManager.useImem002(PlayerSpeed,gameObject);
-
-                    BoostSpeed();
-            }
-            else if(item==3)
-            {
-                Vector3 playerPosition = transform.position;
-                // 调用ITEM的Use方法
-                ItemManager.useImem003(playerPosition,team);
-           
-            }
-
-             Debug.Log("Item ID USED:"+item);
-             item=0;
+        if (item==1) {
+            // 调用ITEM的Use方法
+            Vector3 playerPosition = transform.position;
+            ItemManager.useImem001(playerPosition, playerDirection,moveSpeed,team,gameObject);
+        }
+        else if(item==2)
+        {
+            BoostSpeed();
+        }
+        else if(item==3)
+        {
+            Vector3 playerPosition = transform.position;
+            // 调用ITEM的Use方法
+            ItemManager.useImem003(playerPosition,team);
+        }
+            Debug.Log("Item ID USED:"+item);
+            item=0;
         }
         else
         {
             Debug.Log("没有物品可以使用");
         }
-   
     }
-
-
-    
-
- void BoostSpeed()
-    {
-        
+    void BoostSpeed()
+    { 
         isBoosted = true;
-
         speedMultiplier=1.5f;
-       moveSpeed = 1.5f * defaultSpeed; // 将速度提升为基础速度的1.5倍
+        moveSpeed = 1.5f * defaultSpeed; // 将速度提升为基础速度的1.5倍
         Debug.Log("Speed boosted to: " + moveSpeed);
-
         // 启动定时器，5秒后恢复基础速度
         Invoke("ResetSpeed", 5f);
     }
-
-
-     void ResetSpeed()
+    void ResetSpeed()
     {
         moveSpeed = 50f; // 恢复到基础速度
-      
-      
         speedMultiplier=1f;
         Debug.Log("Speed reset to base: " + moveSpeed);
         isBoosted = false;
     }
-/// <summary>
-/// itme
-/// </summary>
-
 
     private void Conquer()
     {
@@ -355,8 +290,6 @@ public void UpdateitemUI(){
     {
         // Check the collided object
         GameObject collidedObject = collision.gameObject;
-
-
         // Example: Check if the collided object is a GroundObject
         PlayerObject collidedPlayerObject = collidedObject.GetComponent<PlayerObject>();
         if (collidedPlayerObject != null)
@@ -364,10 +297,9 @@ public void UpdateitemUI(){
             Debug.Log("Collided with a Player");
             if (!clawing) 
             {
+                animationController.TriggerDizzy(0.5f);
                 freezeTimeRemaining = 0.5f;
             }
         }
     }
-   
-
 }

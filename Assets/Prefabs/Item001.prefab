@@ -101,6 +101,8 @@ MonoBehaviour:
   PlayerObject001: {fileID: 0}
   maxQueueSize: 4
   radius: 5
+  timer: 0
+  isTimerRunning: 0
   ItenNumber: 1
   isCloseItem: 0
 --- !u!58 &-149050367878757316
@@ -132,7 +134,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
